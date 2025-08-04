@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  <QuestTargetInfo.EstimatedDistanceTiles>Estimated distance: {0} tiles</QuestTargetInfo.EstimatedDistanceTiles>
+  <QuestTargetInfo.Shuttle>Shuttle:</QuestTargetInfo.Shuttle>
+  <QuestTargetInfo.FuelCost>Fuel cost: {0}</QuestTargetInfo.FuelCost>
+  <QuestTargetInfo.FuelReturnCost>Return trip fuel cost: {0}</QuestTargetInfo.FuelReturnCost>
+  <QuestTargetInfo.FuelTotalCost>Total fuel required: {0}</QuestTargetInfo.FuelTotalCost>
+  <QuestTargetInfo.TransportPod>Transport Pod:</QuestTargetInfo.TransportPod>
+  <QuestTargetInfo.Gravship>Gravship:</QuestTargetInfo.Gravship>
+  <QuestTargetInfo.NoGravship>No gravship found.</QuestTargetInfo.NoGravship>
+  <QuestTargetInfo.Header>Target info</QuestTargetInfo.Header>
+  <QuestTargetInfo.CollapseTooltip>Collapse</QuestTargetInfo.CollapseTooltip>
+  <QuestTargetInfo.ExpandTooltip>Expand</QuestTargetInfo.ExpandTooltip>
+</LanguageData>

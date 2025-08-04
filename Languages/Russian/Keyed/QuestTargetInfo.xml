@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  <QuestTargetInfo.EstimatedDistanceTiles>Примерная дистанция: {0} клеток</QuestTargetInfo.EstimatedDistanceTiles>
+  <QuestTargetInfo.Shuttle>Шаттл:</QuestTargetInfo.Shuttle>
+  <QuestTargetInfo.FuelCost>Расход топлива: {0}</QuestTargetInfo.FuelCost>
+  <QuestTargetInfo.FuelReturnCost>Топливо на обратный путь: {0}</QuestTargetInfo.FuelReturnCost>
+  <QuestTargetInfo.FuelTotalCost>Общий расход топлива: {0}</QuestTargetInfo.FuelTotalCost>
+  <QuestTargetInfo.TransportPod>Транспортная капсула:</QuestTargetInfo.TransportPod>
+  <QuestTargetInfo.Gravship>Гравикорабль:</QuestTargetInfo.Gravship>
+  <QuestTargetInfo.NoGravship>Гравикорабль не найден.</QuestTargetInfo.NoGravship>
+  <QuestTargetInfo.Header>Информация о цели</QuestTargetInfo.Header>
+  <QuestTargetInfo.CollapseTooltip>Свернуть</QuestTargetInfo.CollapseTooltip>
+  <QuestTargetInfo.ExpandTooltip>Развернуть</QuestTargetInfo.ExpandTooltip>
+</LanguageData>
