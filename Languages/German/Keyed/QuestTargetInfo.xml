@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  <QuestTargetInfo.EstimatedDistanceTiles>Geschätzte Entfernung:\n{0} Felder</QuestTargetInfo.EstimatedDistanceTiles>
+  <QuestTargetInfo.Shuttle>Raumfähre:</QuestTargetInfo.Shuttle>
+  <QuestTargetInfo.FuelCost>Treibstoffkosten: {0}</QuestTargetInfo.FuelCost>
+  <QuestTargetInfo.FuelReturnCost>Für den Rückflug: {0}</QuestTargetInfo.FuelReturnCost>
+  <QuestTargetInfo.FuelTotalCost>Gesamtkraftstoffbedarf: {0}</QuestTargetInfo.FuelTotalCost>
+  <QuestTargetInfo.TransportPod>Transportkapsel:</QuestTargetInfo.TransportPod>
+  <QuestTargetInfo.Gravship>Gravschiff:</QuestTargetInfo.Gravship>
+  <QuestTargetInfo.NoGravship>Kein Gravschiff gefunden.</QuestTargetInfo.NoGravship>
+  <QuestTargetInfo.Header>Zielinfo</QuestTargetInfo.Header>
+  <QuestTargetInfo.CollapseTooltip>Ausblenden</QuestTargetInfo.CollapseTooltip>
+  <QuestTargetInfo.ExpandTooltip>Einblenden</QuestTargetInfo.ExpandTooltip>
+</LanguageData>

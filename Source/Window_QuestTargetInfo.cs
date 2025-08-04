@@ -194,7 +194,6 @@ namespace QuestTargetInfo
                     out float fuelCost, out int gravDist,
                     fuelPerTile: engine.FuelPerTile);
 
-                yield return "QuestTargetInfo.EstimatedDistanceTiles".Translate(gravDist);
                 yield return "QuestTargetInfo.FuelCost".Translate((int)fuelCost);
             }
         }
