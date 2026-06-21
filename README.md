@@ -25,3 +25,15 @@ Designed primarily for the *Odyssey DLC*, but works correctly with any DLC or mo
 ## Requirements
 
 - [Harmony](https://steamcommunity.com/workshop/filedetails/?id=2009463077)
+
+## Development build
+
+1. Copy `docs/QuestTargetInfo.Local.props.example` to `src/QuestTargetInfo.Local.props`.
+2. Set `RimWorldInstallDir` and `HarmonyDllPath` for your local machine.
+3. Build `src/QuestTargetInfo.sln`.
+
+By default, the compiled assembly is written to:
+
+`mod/Current/Assemblies/`
+
+You can override the output path by setting `ModAssembliesDir` in `QuestTargetInfo.Local.props`.

@@ -400,6 +400,16 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 
-# Rimworld specific
+# RimWorld / local mod build settings
+QuestTargetInfo.Local.props
+
+# RimWorld local logs / publisher files
 _PublisherPlus.xml
 lastrun.log
+
+# Project build output
+src/bin/
+src/obj/
+
+# Generated debug symbols in mod output
+mod/*/Assemblies/*.pdb

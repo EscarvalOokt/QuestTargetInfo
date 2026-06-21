@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <!-- Path to the RimWorld installation folder. -->
+    <RimWorldInstallDir>C:\Program Files (x86)\Steam\steamapps\common\RimWorld</RimWorldInstallDir>
+
+    <!-- Path to Harmony's 0Harmony.dll. Adjust the version folder if needed. -->
+    <HarmonyDllPath>C:\Program Files (x86)\Steam\steamapps\workshop\content\294100\2009463077\1.6\Assemblies\0Harmony.dll</HarmonyDllPath>
+
+    <!-- Optional: override the mod output folder.
+         By default the project builds to:
+         mod\1.6\Assemblies\
+    -->
+    <!-- <ModAssembliesDir>D:\RimWorldMods\QuestTargetInfo\1.6\Assemblies</ModAssembliesDir> -->
+  </PropertyGroup>
+</Project>
