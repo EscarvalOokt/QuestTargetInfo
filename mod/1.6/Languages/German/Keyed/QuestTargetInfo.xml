@@ -10,10 +10,11 @@
     <QuestTargetInfo.CurrentMap>Aktuelle Karte</QuestTargetInfo.CurrentMap>
     <QuestTargetInfo.Distance>Entfernung</QuestTargetInfo.Distance>
     <QuestTargetInfo.EstimatedDistanceTiles>Geschätzte Entfernung:\n{0} Felder</QuestTargetInfo.EstimatedDistanceTiles>
-    <QuestTargetInfo.EstimatedFuel>Schätzung</QuestTargetInfo.EstimatedFuel>
+    <QuestTargetInfo.EstimatedFuel>Geschätzter Treibstoffbedarf</QuestTargetInfo.EstimatedFuel>
+    <QuestTargetInfo.EstimatedLaunches>Geschätzte Starts</QuestTargetInfo.EstimatedLaunches>
     <QuestTargetInfo.ExpandTooltip>Einblenden</QuestTargetInfo.ExpandTooltip>
     <QuestTargetInfo.From>Von</QuestTargetInfo.From>
-    <QuestTargetInfo.Fuel>Treibstoff</QuestTargetInfo.Fuel>
+    <QuestTargetInfo.Fuel>Treibstoff benötigt</QuestTargetInfo.Fuel>
     <QuestTargetInfo.FuelCost>Treibstoffkosten: {0}</QuestTargetInfo.FuelCost>
     <QuestTargetInfo.FuelEstimate>Geschätzte Treibstoffkosten: {0}</QuestTargetInfo.FuelEstimate>
     <QuestTargetInfo.FuelReturnCost>Für den Rückflug: {0}</QuestTargetInfo.FuelReturnCost>
@@ -25,19 +26,22 @@
     <QuestTargetInfo.InvalidOrigin>Ungültiger Startpunkt.</QuestTargetInfo.InvalidOrigin>
     <QuestTargetInfo.InvalidTarget>Ungültiges Ziel.</QuestTargetInfo.InvalidTarget>
     <QuestTargetInfo.InvalidWorldObject>Dieses Weltobjekt ist kein gültiges Transportziel.</QuestTargetInfo.InvalidWorldObject>
+    <QuestTargetInfo.LaunchCountValue>{0} hin / {1} zurück</QuestTargetInfo.LaunchCountValue>
     <QuestTargetInfo.Layer>Schicht</QuestTargetInfo.Layer>
+    <QuestTargetInfo.LayerAdjustedDistance>Schichtangepasste Entfernung</QuestTargetInfo.LayerAdjustedDistance>
     <QuestTargetInfo.LayerRoute>{0} → {1}</QuestTargetInfo.LayerRoute>
     <QuestTargetInfo.NoGravship>Kein Gravschiff gefunden.</QuestTargetInfo.NoGravship>
     <QuestTargetInfo.NoLayerPath>Keine Route zwischen Planetenschichten.</QuestTargetInfo.NoLayerPath>
+    <QuestTargetInfo.NoVehicle>Kein Fahrzeug gefunden.</QuestTargetInfo.NoVehicle>
     <QuestTargetInfo.NotEnoughFuel>Nicht genug Treibstoff.</QuestTargetInfo.NotEnoughFuel>
     <QuestTargetInfo.NotEnoughFuelInGravshipTanks>Nicht genug Treibstoff in den Gravschiff-Tanks.</QuestTargetInfo.NotEnoughFuelInGravshipTanks>
-    <QuestTargetInfo.NoVehicle>Kein Fahrzeug gefunden.</QuestTargetInfo.NoVehicle>
     <QuestTargetInfo.OpenWorldTargetInfoTooltip>Reiseinfo anzeigen</QuestTargetInfo.OpenWorldTargetInfoTooltip>
+    <QuestTargetInfo.OutboundFuel>Treibstoff hin</QuestTargetInfo.OutboundFuel>
     <QuestTargetInfo.Range>Reichweite</QuestTargetInfo.Range>
     <QuestTargetInfo.RangeValue>{0} / {1} Felder</QuestTargetInfo.RangeValue>
     <QuestTargetInfo.Reason>Grund: {0}</QuestTargetInfo.Reason>
     <QuestTargetInfo.RequiresSignalJammer>Signalstörer erforderlich.</QuestTargetInfo.RequiresSignalJammer>
-    <QuestTargetInfo.ReturnFuel>Rückflug</QuestTargetInfo.ReturnFuel>
+    <QuestTargetInfo.ReturnFuel>Treibstoff zurück</QuestTargetInfo.ReturnFuel>
     <QuestTargetInfo.Route>Route</QuestTargetInfo.Route>
     <QuestTargetInfo.RouteUnavailable>Route nicht verfügbar.</QuestTargetInfo.RouteUnavailable>
     <QuestTargetInfo.SameTile>Das ausgewählte Ziel befindet sich auf der aktuellen Karte.</QuestTargetInfo.SameTile>
@@ -46,13 +50,13 @@
     <QuestTargetInfo.StatusCannotLand>Landung unmöglich</QuestTargetInfo.StatusCannotLand>
     <QuestTargetInfo.StatusInvalidTarget>Ungültiges Ziel</QuestTargetInfo.StatusInvalidTarget>
     <QuestTargetInfo.StatusNoRoute>Keine Route</QuestTargetInfo.StatusNoRoute>
-    <QuestTargetInfo.StatusNotEnoughFuel>Nicht genug Treibstoff</QuestTargetInfo.StatusNotEnoughFuel>
     <QuestTargetInfo.StatusNoVehicle>Kein Fahrzeug</QuestTargetInfo.StatusNoVehicle>
+    <QuestTargetInfo.StatusNotEnoughFuel>Nicht genug Treibstoff</QuestTargetInfo.StatusNotEnoughFuel>
     <QuestTargetInfo.StatusOutOfRange>Außer Reichweite</QuestTargetInfo.StatusOutOfRange>
-    <QuestTargetInfo.StatusRequiresSignalJammer>Signalstörer erforderlich</QuestTargetInfo.StatusRequiresSignalJammer>
+    <QuestTargetInfo.StatusRequiresSignalJammer>Störer nötig</QuestTargetInfo.StatusRequiresSignalJammer>
     <QuestTargetInfo.StatusUnavailable>Nicht verfügbar</QuestTargetInfo.StatusUnavailable>
     <QuestTargetInfo.TabLabel>Reise</QuestTargetInfo.TabLabel>
     <QuestTargetInfo.TilesValue>{0} Felder</QuestTargetInfo.TilesValue>
-    <QuestTargetInfo.TotalFuel>Gesamt</QuestTargetInfo.TotalFuel>
+    <QuestTargetInfo.TotalFuel>Treibstoff gesamt</QuestTargetInfo.TotalFuel>
     <QuestTargetInfo.TransportPod>Transportkapsel</QuestTargetInfo.TransportPod>
 </LanguageData>

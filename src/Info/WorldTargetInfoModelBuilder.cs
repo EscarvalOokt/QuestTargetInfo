@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using RimWorld.Planet;
+using UnityEngine;
 using Verse;
 
 namespace QuestTargetInfo
@@ -48,6 +49,7 @@ namespace QuestTargetInfo
 
             AddRouteLayerContextLines(request, lines);
             AddRouteDistanceLine(route, lines);
+            AddLayerAdjustedDistanceLine(route, lines);
             AddRouteStatusLine(route, lines);
 
             return new WorldTargetInfoSectionModel(
@@ -108,6 +110,29 @@ namespace QuestTargetInfo
                 "QuestTargetInfo.TilesValue".Translate(route.Distance.DistanceTo).ToString()));
         }
 
+        private static void AddLayerAdjustedDistanceLine(
+            WorldTargetRouteInfo route,
+            List<WorldTargetInfoLineModel> lines)
+        {
+            if(!route.HasDistance)
+                return;
+
+            int distance = route.Distance.DistanceTo;
+            float rangeDistanceFactor = GetLayerRangeDistanceFactor(route.Distance.ToLayer);
+
+            if(Mathf.Approximately(rangeDistanceFactor, 1f))
+                return;
+
+            int adjustedDistance = Mathf.CeilToInt(distance * rangeDistanceFactor);
+
+            if(adjustedDistance == distance)
+                return;
+
+            lines.Add(CreateLabelValueLine(
+                "QuestTargetInfo.LayerAdjustedDistance".Translate().ToString(),
+                "QuestTargetInfo.TilesValue".Translate(adjustedDistance).ToString()));
+        }
+
         private static void AddRouteStatusLine(
             WorldTargetRouteInfo route,
             List<WorldTargetInfoLineModel> lines)
@@ -153,6 +178,17 @@ namespace QuestTargetInfo
                 return "QuestTargetInfo.InvalidTarget".Translate().ToString();
 
             return layer.Def.LabelCap.ToString();
+        }
+
+        private static float GetLayerRangeDistanceFactor(
+            PlanetLayer layer)
+        {
+            float rangeDistanceFactor = layer?.Def?.rangeDistanceFactor ?? 1f;
+
+            if(rangeDistanceFactor <= 0f)
+                return 1f;
+
+            return rangeDistanceFactor;
         }
 
         private static string GetRouteStatusLine(WorldTargetRouteStatus status)
@@ -220,27 +256,35 @@ namespace QuestTargetInfo
             WorldTargetTransportInfo info,
             List<WorldTargetInfoLineModel> lines)
         {
-            lines.Add(CreateLabelValueLine(
-                "QuestTargetInfo.Fuel".Translate().ToString(),
-                ((int)info.FuelCost).ToString()));
-
-            if(info.Kind != WorldTargetTransportKind.Shuttle)
+            if(info.Kind == WorldTargetTransportKind.Shuttle)
+            {
+                AddShuttleFuelLines(info, lines);
                 return;
+            }
 
             lines.Add(CreateLabelValueLine(
-                "QuestTargetInfo.ReturnFuel".Translate().ToString(),
-                ((int)info.FuelReturnCost).ToString()));
+                GetPrimaryFuelLabel(info.Kind),
+                ((int)info.FuelCost).ToString()));
+        }
 
-            lines.Add(CreateLabelValueLine(
-                "QuestTargetInfo.TotalFuel".Translate().ToString(),
-                ((int)info.FuelTotalCost).ToString()));
+        private static string GetPrimaryFuelLabel(
+            WorldTargetTransportKind kind)
+        {
+            if(kind == WorldTargetTransportKind.Shuttle)
+                return "QuestTargetInfo.OutboundFuel".Translate().ToString();
+
+            return "QuestTargetInfo.Fuel".Translate().ToString();
         }
 
         private static void AddUnavailableTransportLines(
             WorldTargetTransportInfo info,
             List<WorldTargetInfoLineModel> lines)
         {
-            if(info.FuelCost >= 0f)
+            if(HasShuttleFuelDetails(info))
+            {
+                AddShuttleFuelLines(info, lines);
+            }
+            else if(info.FuelCost >= 0f)
             {
                 lines.Add(CreateLabelValueLine(
                     "QuestTargetInfo.EstimatedFuel".Translate().ToString(),
@@ -250,6 +294,32 @@ namespace QuestTargetInfo
             string detail = GetStatusDetailsLine(info);
             if(!detail.NullOrEmpty())
                 lines.Add(new WorldTargetInfoLineModel(detail));
+        }
+
+        private static bool HasShuttleFuelDetails(
+            WorldTargetTransportInfo info)
+        {
+            return info.Kind == WorldTargetTransportKind.Shuttle
+                && info.FuelCost >= 0f
+                && info.FuelReturnCost >= 0f
+                && info.FuelTotalCost >= 0f;
+        }
+
+        private static void AddShuttleFuelLines(
+            WorldTargetTransportInfo info,
+            List<WorldTargetInfoLineModel> lines)
+        {
+            lines.Add(CreateLabelValueLine(
+                "QuestTargetInfo.OutboundFuel".Translate().ToString(),
+                ((int)info.FuelCost).ToString()));
+
+            lines.Add(CreateLabelValueLine(
+                "QuestTargetInfo.ReturnFuel".Translate().ToString(),
+                ((int)info.FuelReturnCost).ToString()));
+
+            lines.Add(CreateLabelValueLine(
+                "QuestTargetInfo.TotalFuel".Translate().ToString(),
+                ((int)info.FuelTotalCost).ToString()));
         }
 
         private static void AddTransportRangeLines(
@@ -264,6 +334,11 @@ namespace QuestTargetInfo
                 case WorldTargetTransportKind.TransportPod:
                     AddPrimaryRangeLine(info, lines);
                     AddAncientTransportPodRangeLine(info, lines);
+                    return;
+
+                case WorldTargetTransportKind.Shuttle:
+                    AddPrimaryRangeLine(info, lines);
+                    AddShuttleLaunchEstimateLine(info, lines);
                     return;
 
                 case WorldTargetTransportKind.Gravship:
@@ -286,6 +361,39 @@ namespace QuestTargetInfo
                 "QuestTargetInfo.Range".Translate().ToString(),
                 info.FlightDistance.Distance,
                 info.FlightDistance.MaxDistance));
+        }
+
+        private static void AddShuttleLaunchEstimateLine(
+            WorldTargetTransportInfo info,
+            List<WorldTargetInfoLineModel> lines)
+        {
+            if(info.Kind != WorldTargetTransportKind.Shuttle)
+                return;
+
+            int outboundLaunchCount = CalculateLaunchCount(info.FlightDistance);
+            int returnLaunchCount = CalculateLaunchCount(info.ReturnFlightDistance);
+
+            if(outboundLaunchCount <= 0 || returnLaunchCount <= 0)
+                return;
+
+            lines.Add(CreateLabelValueLine(
+                "QuestTargetInfo.EstimatedLaunches".Translate().ToString(),
+                "QuestTargetInfo.LaunchCountValue".Translate(
+                    outboundLaunchCount,
+                    returnLaunchCount).ToString()));
+        }
+
+        private static int CalculateLaunchCount(
+            WorldTargetFlightDistanceContext flightDistance)
+        {
+            if(!flightDistance.HasDistance || !flightDistance.HasMaxDistance)
+                return -1;
+
+            if(flightDistance.MaxDistance <= 0)
+                return -1;
+
+            return Mathf.CeilToInt(
+                (float)flightDistance.Distance / flightDistance.MaxDistance);
         }
 
         private static void AddAncientTransportPodRangeLine(
@@ -428,7 +536,7 @@ namespace QuestTargetInfo
                     return "QuestTargetInfo.InvalidLandingTarget".Translate().ToString();
 
                 case WorldTargetTransportStatus.RequiresSignalJammer:
-                    return null;
+                    return "QuestTargetInfo.RequiresSignalJammer".Translate().ToString();
 
                 case WorldTargetTransportStatus.NoLayerPath:
                     return "QuestTargetInfo.NoLayerPath".Translate().ToString();

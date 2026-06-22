@@ -10,10 +10,11 @@
     <QuestTargetInfo.CurrentMap>Поточна мапа</QuestTargetInfo.CurrentMap>
     <QuestTargetInfo.Distance>Відстань</QuestTargetInfo.Distance>
     <QuestTargetInfo.EstimatedDistanceTiles>Орієнтовна відстань: {0} плиток</QuestTargetInfo.EstimatedDistanceTiles>
-    <QuestTargetInfo.EstimatedFuel>Оцінка</QuestTargetInfo.EstimatedFuel>
+    <QuestTargetInfo.EstimatedFuel>Прибл. потрібно пального</QuestTargetInfo.EstimatedFuel>
+    <QuestTargetInfo.EstimatedLaunches>Перельотів</QuestTargetInfo.EstimatedLaunches>
     <QuestTargetInfo.ExpandTooltip>Розгорнути</QuestTargetInfo.ExpandTooltip>
     <QuestTargetInfo.From>Звідки</QuestTargetInfo.From>
-    <QuestTargetInfo.Fuel>Пальне</QuestTargetInfo.Fuel>
+    <QuestTargetInfo.Fuel>Потрібно пального</QuestTargetInfo.Fuel>
     <QuestTargetInfo.FuelCost>Витрати пального: {0}</QuestTargetInfo.FuelCost>
     <QuestTargetInfo.FuelEstimate>Оцінка витрат пального: {0}</QuestTargetInfo.FuelEstimate>
     <QuestTargetInfo.FuelReturnCost>Пальне на зворотний шлях: {0}</QuestTargetInfo.FuelReturnCost>
@@ -25,19 +26,22 @@
     <QuestTargetInfo.InvalidOrigin>Некоректна точка відправлення.</QuestTargetInfo.InvalidOrigin>
     <QuestTargetInfo.InvalidTarget>Некоректна ціль.</QuestTargetInfo.InvalidTarget>
     <QuestTargetInfo.InvalidWorldObject>Цей об’єкт світу не є допустимою ціллю для транспорту.</QuestTargetInfo.InvalidWorldObject>
+    <QuestTargetInfo.LaunchCountValue>{0} туди / {1} назад</QuestTargetInfo.LaunchCountValue>
     <QuestTargetInfo.Layer>Шар</QuestTargetInfo.Layer>
+    <QuestTargetInfo.LayerAdjustedDistance>Відстань з урахуванням шару</QuestTargetInfo.LayerAdjustedDistance>
     <QuestTargetInfo.LayerRoute>{0} → {1}</QuestTargetInfo.LayerRoute>
     <QuestTargetInfo.NoGravship>Гравкорабель не знайдено.</QuestTargetInfo.NoGravship>
     <QuestTargetInfo.NoLayerPath>Немає маршруту між шарами планети.</QuestTargetInfo.NoLayerPath>
+    <QuestTargetInfo.NoVehicle>Транспорт не знайдено.</QuestTargetInfo.NoVehicle>
     <QuestTargetInfo.NotEnoughFuel>Недостатньо пального.</QuestTargetInfo.NotEnoughFuel>
     <QuestTargetInfo.NotEnoughFuelInGravshipTanks>Недостатньо пального в баках гравкорабля.</QuestTargetInfo.NotEnoughFuelInGravshipTanks>
-    <QuestTargetInfo.NoVehicle>Транспорт не знайдено.</QuestTargetInfo.NoVehicle>
     <QuestTargetInfo.OpenWorldTargetInfoTooltip>Показати інформацію про шлях</QuestTargetInfo.OpenWorldTargetInfoTooltip>
+    <QuestTargetInfo.OutboundFuel>Пальне туди</QuestTargetInfo.OutboundFuel>
     <QuestTargetInfo.Range>Дальність</QuestTargetInfo.Range>
     <QuestTargetInfo.RangeValue>{0} / {1} плиток</QuestTargetInfo.RangeValue>
     <QuestTargetInfo.Reason>Причина: {0}</QuestTargetInfo.Reason>
     <QuestTargetInfo.RequiresSignalJammer>Потрібен глушник сигналу.</QuestTargetInfo.RequiresSignalJammer>
-    <QuestTargetInfo.ReturnFuel>Назад</QuestTargetInfo.ReturnFuel>
+    <QuestTargetInfo.ReturnFuel>Пальне назад</QuestTargetInfo.ReturnFuel>
     <QuestTargetInfo.Route>Маршрут</QuestTargetInfo.Route>
     <QuestTargetInfo.RouteUnavailable>Маршрут недоступний.</QuestTargetInfo.RouteUnavailable>
     <QuestTargetInfo.SameTile>Вибрана ціль знаходиться на поточній мапі.</QuestTargetInfo.SameTile>
@@ -46,13 +50,13 @@
     <QuestTargetInfo.StatusCannotLand>Посадка неможлива</QuestTargetInfo.StatusCannotLand>
     <QuestTargetInfo.StatusInvalidTarget>Некоректна ціль</QuestTargetInfo.StatusInvalidTarget>
     <QuestTargetInfo.StatusNoRoute>Немає маршруту</QuestTargetInfo.StatusNoRoute>
-    <QuestTargetInfo.StatusNotEnoughFuel>Недостатньо пального</QuestTargetInfo.StatusNotEnoughFuel>
     <QuestTargetInfo.StatusNoVehicle>Немає транспорту</QuestTargetInfo.StatusNoVehicle>
+    <QuestTargetInfo.StatusNotEnoughFuel>Недостатньо пального</QuestTargetInfo.StatusNotEnoughFuel>
     <QuestTargetInfo.StatusOutOfRange>Поза дальністю</QuestTargetInfo.StatusOutOfRange>
-    <QuestTargetInfo.StatusRequiresSignalJammer>Потрібен глушник сигналу</QuestTargetInfo.StatusRequiresSignalJammer>
+    <QuestTargetInfo.StatusRequiresSignalJammer>Потрібен глушник</QuestTargetInfo.StatusRequiresSignalJammer>
     <QuestTargetInfo.StatusUnavailable>Недоступно</QuestTargetInfo.StatusUnavailable>
     <QuestTargetInfo.TabLabel>Шлях</QuestTargetInfo.TabLabel>
     <QuestTargetInfo.TilesValue>{0} плиток</QuestTargetInfo.TilesValue>
-    <QuestTargetInfo.TotalFuel>Разом</QuestTargetInfo.TotalFuel>
+    <QuestTargetInfo.TotalFuel>Пальне разом</QuestTargetInfo.TotalFuel>
     <QuestTargetInfo.TransportPod>Транспортна капсула</QuestTargetInfo.TransportPod>
 </LanguageData>

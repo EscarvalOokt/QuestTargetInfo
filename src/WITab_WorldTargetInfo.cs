@@ -6,7 +6,7 @@ namespace QuestTargetInfo
 {
     internal class WITab_WorldTargetInfo : WITab
     {
-        private static readonly Vector2 WinSize = new Vector2(360f, 440f);
+        private static readonly Vector2 WinSize = new Vector2(360f, 480f);
 
         private Vector2 _scrollPosition;
         private float _lastDrawnHeight;
@@ -75,8 +75,7 @@ namespace QuestTargetInfo
         private WorldTargetInfoModel GetModelCached(
             WorldTargetInfoRequest request)
         {
-            WorldTargetInfoRequestKey currentKey =
-                WorldTargetInfoRequestKey.From(request);
+            var currentKey = WorldTargetInfoRequestKey.From(request);
 
             if(!_hasLastRequestKey || currentKey != _lastRequestKey)
             {

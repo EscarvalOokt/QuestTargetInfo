@@ -28,6 +28,7 @@ namespace QuestTargetInfo
 
                 float curY = rect.y;
                 bool hasDrawnContent = false;
+                bool hasDrawnTransportSection = false;
 
                 if(options.DrawTitle && !model.Title.NullOrEmpty())
                 {
@@ -50,8 +51,22 @@ namespace QuestTargetInfo
                     if(!HasDrawableContent(section))
                         continue;
 
+                    bool isTransportSection = IsTransportSection(section);
+
                     if(hasDrawnContent && section.Kind != WorldTargetInfoSectionKind.Route)
-                        curY += options.SectionGap;
+                    {
+                        if(isTransportSection && hasDrawnTransportSection)
+                        {
+                            curY = DrawSectionDivider(
+                                rect,
+                                curY,
+                                options);
+                        }
+                        else
+                        {
+                            curY += options.SectionGap;
+                        }
+                    }
 
                     curY = DrawSection(
                         rect,
@@ -60,6 +75,9 @@ namespace QuestTargetInfo
                         options);
 
                     hasDrawnContent = true;
+
+                    if(isTransportSection)
+                        hasDrawnTransportSection = true;
                 }
 
                 return Mathf.Max(0f, curY - rect.y);
@@ -70,6 +88,25 @@ namespace QuestTargetInfo
                 Text.Anchor = oldAnchor;
                 GUI.color = oldColor;
             }
+        }
+
+        private static float DrawSectionDivider(
+            Rect rect,
+            float curY,
+            WorldTargetInfoDrawOptions options)
+        {
+            const float horizontalInset = 4f;
+            const float dividerHeight = 1f;
+
+            curY += options.SectionDividerTopGap;
+
+            Widgets.DrawLineHorizontal(
+                rect.x + horizontalInset,
+                curY,
+                Mathf.Max(0f, rect.width - horizontalInset * 2f),
+                options.SectionDividerColor);
+
+            return curY + dividerHeight + options.SectionDividerBottomGap;
         }
 
         private static float DrawSection(
@@ -229,6 +266,24 @@ namespace QuestTargetInfo
             Widgets.Label(lineRect, text);
 
             return curY + height + lineGap;
+        }
+
+        private static bool IsTransportSection(
+            WorldTargetInfoSectionModel section)
+        {
+            if(section == null)
+                return false;
+
+            switch(section.Kind)
+            {
+                case WorldTargetInfoSectionKind.TransportPod:
+                case WorldTargetInfoSectionKind.Shuttle:
+                case WorldTargetInfoSectionKind.Gravship:
+                    return true;
+
+                default:
+                    return false;
+            }
         }
 
         private static bool HasDrawableContent(

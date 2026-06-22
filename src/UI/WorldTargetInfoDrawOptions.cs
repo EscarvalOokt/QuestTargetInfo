@@ -28,6 +28,9 @@ namespace QuestTargetInfo
                 TitleBottomGap = 5f,
                 SectionGap = 12f,
                 LineGap = 2f,
+                SectionDividerTopGap = 5f,
+                SectionDividerBottomGap = 6f,
+                SectionDividerColor = new Color(1f, 1f, 1f, 0.16f),
 
                 // Muted RimWorld-friendly status colors.
                 AvailableStatusColor = new Color(0.45f, 0.9f, 0.45f),
@@ -48,6 +51,12 @@ namespace QuestTargetInfo
         public float SectionGap { get; private set; }
 
         public float LineGap { get; private set; }
+
+        public float SectionDividerTopGap { get; private set; }
+
+        public float SectionDividerBottomGap { get; private set; }
+
+        public Color SectionDividerColor { get; private set; }
 
         public Color AvailableStatusColor { get; private set; }
 

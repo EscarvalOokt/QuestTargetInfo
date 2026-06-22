@@ -12,6 +12,9 @@ namespace QuestTargetInfo
         private const float PodFuelPerTile = 2.25f;
         private const float MinFuel = 50f;
 
+        // PassengerShuttle defines fixedLaunchDistanceMax = 62.
+        internal const int ShuttleMaxLaunchDistance = 62;
+
         // Vanilla maximum regular transport pod range.
         // MechanoidDropPod defines fixedLaunchDistanceMax = 67 with the XML comment:
         // "maximum regular transport pod range".
@@ -126,7 +129,14 @@ namespace QuestTargetInfo
             WorldTargetFlightDistanceContext flightDistance =
                 CreateFlightDistanceContext(
                     distanceTo,
-                    request.TargetTile.Layer);
+                    request.TargetTile.Layer,
+                    ShuttleMaxLaunchDistance);
+
+            WorldTargetFlightDistanceContext returnFlightDistance =
+                CreateFlightDistanceContext(
+                    distanceReturn,
+                    request.OriginTile.Layer,
+                    ShuttleMaxLaunchDistance);
 
             float fuelTo = CalculateFuelCost(
                 distanceTo,
@@ -138,6 +148,20 @@ namespace QuestTargetInfo
                 ShuttleFuelPerTile,
                 request.OriginTile.Layer);
 
+            if(distanceTo > flightDistance.MaxDistance)
+            {
+                return CreateStatus(
+                    WorldTargetTransportKind.Shuttle,
+                    WorldTargetTransportStatus.BeyondMaximumRange,
+                    distanceTo: distanceTo,
+                    distanceReturn: distanceReturn,
+                    fuelCost: fuelTo,
+                    fuelReturnCost: fuelReturn,
+                    fuelTotalCost: fuelTo + fuelReturn,
+                    flightDistance: flightDistance,
+                    returnFlightDistance: returnFlightDistance);
+            }
+
             return new WorldTargetTransportInfo(
                 WorldTargetTransportKind.Shuttle,
                 WorldTargetTransportStatus.Available,
@@ -146,7 +170,8 @@ namespace QuestTargetInfo
                 fuelCost: fuelTo,
                 fuelReturnCost: fuelReturn,
                 fuelTotalCost: fuelTo + fuelReturn,
-                flightDistance: flightDistance);
+                flightDistance: flightDistance,
+                returnFlightDistance: returnFlightDistance);
         }
 
         public static WorldTargetTransportInfo CalculateGravship(
@@ -403,12 +428,12 @@ namespace QuestTargetInfo
             float rangeDistanceFactor)
         {
             if(baseMaxDistance < 0f)
-                return Mathf.FloorToInt(baseMaxDistance);
+                return Mathf.RoundToInt(baseMaxDistance);
 
             if(rangeDistanceFactor <= 0f)
                 rangeDistanceFactor = 1f;
 
-            return Mathf.FloorToInt(baseMaxDistance / rangeDistanceFactor);
+            return Mathf.RoundToInt(baseMaxDistance / rangeDistanceFactor);
         }
 
         private static float GetLayerRangeDistanceFactor(
@@ -462,17 +487,25 @@ namespace QuestTargetInfo
             WorldTargetTransportKind kind,
             WorldTargetTransportStatus status,
             int distanceTo = -1,
+            int distanceReturn = -1,
             float fuelCost = -1f,
+            float fuelReturnCost = -1f,
+            float fuelTotalCost = -1f,
             string reason = null,
-            WorldTargetFlightDistanceContext flightDistance = default)
+            WorldTargetFlightDistanceContext flightDistance = default,
+            WorldTargetFlightDistanceContext returnFlightDistance = default)
         {
             return new WorldTargetTransportInfo(
                 kind,
                 status,
                 distanceTo: distanceTo,
+                distanceReturn: distanceReturn,
                 fuelCost: fuelCost,
+                fuelReturnCost: fuelReturnCost,
+                fuelTotalCost: fuelTotalCost,
                 reason: reason,
-                flightDistance: flightDistance);
+                flightDistance: flightDistance,
+                returnFlightDistance: returnFlightDistance);
         }
     }
 }

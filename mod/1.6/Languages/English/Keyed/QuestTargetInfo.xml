@@ -9,10 +9,11 @@
     <QuestTargetInfo.CurrentMap>Current map</QuestTargetInfo.CurrentMap>
     <QuestTargetInfo.Distance>Distance</QuestTargetInfo.Distance>
     <QuestTargetInfo.EstimatedDistanceTiles>Estimated distance: {0} tiles</QuestTargetInfo.EstimatedDistanceTiles>
-    <QuestTargetInfo.EstimatedFuel>Est. fuel</QuestTargetInfo.EstimatedFuel>
+    <QuestTargetInfo.EstimatedFuel>Est. fuel required</QuestTargetInfo.EstimatedFuel>
+    <QuestTargetInfo.EstimatedLaunches>Est. launches</QuestTargetInfo.EstimatedLaunches>
     <QuestTargetInfo.ExpandTooltip>Expand</QuestTargetInfo.ExpandTooltip>
     <QuestTargetInfo.From>From</QuestTargetInfo.From>
-    <QuestTargetInfo.Fuel>Fuel</QuestTargetInfo.Fuel>
+    <QuestTargetInfo.Fuel>Fuel required</QuestTargetInfo.Fuel>
     <QuestTargetInfo.FuelCost>Fuel cost: {0}</QuestTargetInfo.FuelCost>
     <QuestTargetInfo.FuelEstimate>Fuel estimate: {0}</QuestTargetInfo.FuelEstimate>
     <QuestTargetInfo.FuelReturnCost>Return trip fuel cost: {0}</QuestTargetInfo.FuelReturnCost>
@@ -24,19 +25,22 @@
     <QuestTargetInfo.InvalidOrigin>Invalid origin.</QuestTargetInfo.InvalidOrigin>
     <QuestTargetInfo.InvalidTarget>Invalid target.</QuestTargetInfo.InvalidTarget>
     <QuestTargetInfo.InvalidWorldObject>This world object is not a valid transport target.</QuestTargetInfo.InvalidWorldObject>
+    <QuestTargetInfo.LaunchCountValue>{0} out / {1} back</QuestTargetInfo.LaunchCountValue>
     <QuestTargetInfo.Layer>Layer</QuestTargetInfo.Layer>
+    <QuestTargetInfo.LayerAdjustedDistance>Layer-adjusted distance</QuestTargetInfo.LayerAdjustedDistance>
     <QuestTargetInfo.LayerRoute>{0} → {1}</QuestTargetInfo.LayerRoute>
     <QuestTargetInfo.NoGravship>No gravship found.</QuestTargetInfo.NoGravship>
     <QuestTargetInfo.NoLayerPath>No route between planet layers.</QuestTargetInfo.NoLayerPath>
+    <QuestTargetInfo.NoVehicle>No vehicle found.</QuestTargetInfo.NoVehicle>
     <QuestTargetInfo.NotEnoughFuel>Not enough fuel.</QuestTargetInfo.NotEnoughFuel>
     <QuestTargetInfo.NotEnoughFuelInGravshipTanks>Not enough fuel in gravship tanks.</QuestTargetInfo.NotEnoughFuelInGravshipTanks>
-    <QuestTargetInfo.NoVehicle>No vehicle found.</QuestTargetInfo.NoVehicle>
     <QuestTargetInfo.OpenWorldTargetInfoTooltip>Show travel info</QuestTargetInfo.OpenWorldTargetInfoTooltip>
+    <QuestTargetInfo.OutboundFuel>Outbound fuel</QuestTargetInfo.OutboundFuel>
     <QuestTargetInfo.Range>Range</QuestTargetInfo.Range>
     <QuestTargetInfo.RangeValue>{0} / {1} tiles</QuestTargetInfo.RangeValue>
     <QuestTargetInfo.Reason>Reason: {0}</QuestTargetInfo.Reason>
     <QuestTargetInfo.RequiresSignalJammer>Requires signal jammer.</QuestTargetInfo.RequiresSignalJammer>
-    <QuestTargetInfo.ReturnFuel>Return</QuestTargetInfo.ReturnFuel>
+    <QuestTargetInfo.ReturnFuel>Return fuel</QuestTargetInfo.ReturnFuel>
     <QuestTargetInfo.Route>Route</QuestTargetInfo.Route>
     <QuestTargetInfo.RouteUnavailable>Route unavailable.</QuestTargetInfo.RouteUnavailable>
     <QuestTargetInfo.SameTile>Selected target is the current map.</QuestTargetInfo.SameTile>
@@ -45,13 +49,13 @@
     <QuestTargetInfo.StatusCannotLand>Cannot land</QuestTargetInfo.StatusCannotLand>
     <QuestTargetInfo.StatusInvalidTarget>Invalid target</QuestTargetInfo.StatusInvalidTarget>
     <QuestTargetInfo.StatusNoRoute>No route</QuestTargetInfo.StatusNoRoute>
-    <QuestTargetInfo.StatusNotEnoughFuel>Not enough fuel</QuestTargetInfo.StatusNotEnoughFuel>
     <QuestTargetInfo.StatusNoVehicle>No vehicle</QuestTargetInfo.StatusNoVehicle>
+    <QuestTargetInfo.StatusNotEnoughFuel>Not enough fuel</QuestTargetInfo.StatusNotEnoughFuel>
     <QuestTargetInfo.StatusOutOfRange>Out of range</QuestTargetInfo.StatusOutOfRange>
-    <QuestTargetInfo.StatusRequiresSignalJammer>Signal jammer required</QuestTargetInfo.StatusRequiresSignalJammer>
+    <QuestTargetInfo.StatusRequiresSignalJammer>Jammer required</QuestTargetInfo.StatusRequiresSignalJammer>
     <QuestTargetInfo.StatusUnavailable>Unavailable</QuestTargetInfo.StatusUnavailable>
     <QuestTargetInfo.TabLabel>Travel</QuestTargetInfo.TabLabel>
     <QuestTargetInfo.TilesValue>{0} tiles</QuestTargetInfo.TilesValue>
-    <QuestTargetInfo.TotalFuel>Total</QuestTargetInfo.TotalFuel>
+    <QuestTargetInfo.TotalFuel>Total fuel</QuestTargetInfo.TotalFuel>
     <QuestTargetInfo.TransportPod>Transport pod</QuestTargetInfo.TransportPod>
 </LanguageData>
