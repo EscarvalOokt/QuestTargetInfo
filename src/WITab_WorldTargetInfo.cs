@@ -13,6 +13,7 @@ namespace QuestTargetInfo
 
         private bool _hasLastRequestKey;
         private WorldTargetInfoRequestKey _lastRequestKey;
+        private WorldTargetInfoModel _cachedModel;
 
         public override bool IsVisible
         {
@@ -37,6 +38,7 @@ namespace QuestTargetInfo
         internal void Notify_RequestUnavailable()
         {
             _hasLastRequestKey = false;
+            _cachedModel = null;
             ResetScrollState();
         }
 
@@ -49,9 +51,7 @@ namespace QuestTargetInfo
                 return;
             }
 
-            ResetScrollIfTargetChanged(request);
-
-            WorldTargetInfoModel model = WorldTargetInfoModelBuilder.Build(request);
+            WorldTargetInfoModel model = GetModelCached(request);
 
             Rect outRect = new Rect(0f, 0f, WinSize.x, WinSize.y)
                 .ContractedBy(10f);
@@ -72,24 +72,25 @@ namespace QuestTargetInfo
             Widgets.EndScrollView();
         }
 
-        private void ResetScrollIfTargetChanged(
+        private WorldTargetInfoModel GetModelCached(
             WorldTargetInfoRequest request)
         {
-            var currentKey = WorldTargetInfoRequestKey.From(request);
+            WorldTargetInfoRequestKey currentKey =
+                WorldTargetInfoRequestKey.From(request);
 
-            if(!_hasLastRequestKey)
+            if(!_hasLastRequestKey || currentKey != _lastRequestKey)
             {
                 _lastRequestKey = currentKey;
                 _hasLastRequestKey = true;
+                _cachedModel = WorldTargetInfoModelBuilder.Build(request);
                 ResetScrollState();
-                return;
+                return _cachedModel;
             }
 
-            if(currentKey == _lastRequestKey)
-                return;
+            if(_cachedModel == null)
+                _cachedModel = WorldTargetInfoModelBuilder.Build(request);
 
-            _lastRequestKey = currentKey;
-            ResetScrollState();
+            return _cachedModel;
         }
 
         private void ResetScrollState()

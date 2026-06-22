@@ -18,19 +18,20 @@ namespace QuestTargetInfo
                 return new WorldTargetInfoModel(GetTitle(request), sections);
 
             sections.Add(BuildTransportSection(
-                WorldTargetFlyingTransportCalculator.CalculateTransportPod(request)));
+                WorldTargetFlyingTransportCalculator.CalculateTransportPod(request, route),
+                request));
 
             WorldTargetTransportInfo shuttle =
-                WorldTargetFlyingTransportCalculator.CalculateShuttle(request);
+                WorldTargetFlyingTransportCalculator.CalculateShuttle(request, route);
 
             if(shuttle.Status != WorldTargetTransportStatus.NoDlc)
-                sections.Add(BuildTransportSection(shuttle));
+                sections.Add(BuildTransportSection(shuttle, request));
 
             WorldTargetTransportInfo gravship =
                 WorldTargetFlyingTransportCalculator.CalculateGravship(request);
 
             if(gravship.Status != WorldTargetTransportStatus.NoDlc)
-                sections.Add(BuildTransportSection(gravship));
+                sections.Add(BuildTransportSection(gravship, request));
 
             return new WorldTargetInfoModel(GetTitle(request), sections);
         }
@@ -185,7 +186,8 @@ namespace QuestTargetInfo
         }
 
         private static WorldTargetInfoSectionModel BuildTransportSection(
-            WorldTargetTransportInfo info)
+            WorldTargetTransportInfo info,
+            WorldTargetInfoRequest request)
         {
             var lines = new List<WorldTargetInfoLineModel>();
 
@@ -194,7 +196,7 @@ namespace QuestTargetInfo
             else
                 AddUnavailableTransportLines(info, lines);
 
-            AddAdditionalTransportLines(info, lines);
+            AddAdditionalTransportLines(info, request, lines);
 
             return new WorldTargetInfoSectionModel(
                 GetSectionKind(info.Kind),
@@ -242,6 +244,7 @@ namespace QuestTargetInfo
 
         private static void AddAdditionalTransportLines(
             WorldTargetTransportInfo info,
+            WorldTargetInfoRequest request,
             List<WorldTargetInfoLineModel> lines)
         {
             if(info.Kind != WorldTargetTransportKind.TransportPod)
@@ -250,11 +253,20 @@ namespace QuestTargetInfo
             if(info.DistanceTo < 0)
                 return;
 
+            PlanetLayer targetLayer = null;
+            if(request != null && request.TargetTile.Valid)
+                targetLayer = request.TargetTile.Layer;
+
+            int ancientPodMaxDistance =
+                WorldTargetFlyingTransportCalculator.GetLayerAdjustedFixedLaunchDistanceMax(
+                    WorldTargetFlyingTransportCalculator.AncientTransportPodMaxLaunchDistance,
+                    targetLayer);
+
             lines.Add(CreateLabelValueLine(
                 "QuestTargetInfo.AncientTransportPodShort".Translate().ToString(),
                 "QuestTargetInfo.RangeValue".Translate(
                     info.DistanceTo,
-                    WorldTargetFlyingTransportCalculator.AncientTransportPodMaxLaunchDistance).ToString()));
+                    ancientPodMaxDistance).ToString()));
         }
 
         private static string GetTitle(WorldTargetInfoRequest request)

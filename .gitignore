@@ -413,3 +413,6 @@ src/obj/
 
 # Generated debug symbols in mod output
 mod/*/Assemblies/*.pdb
+
+# Local development planning drafts
+development-roadmap.md

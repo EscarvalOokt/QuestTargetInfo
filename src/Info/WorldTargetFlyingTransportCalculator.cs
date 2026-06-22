@@ -27,6 +27,15 @@ namespace QuestTargetInfo
         public static WorldTargetTransportInfo CalculateTransportPod(
             WorldTargetInfoRequest request)
         {
+            return CalculateTransportPod(
+                request,
+                WorldTargetRouteCalculator.Calculate(request));
+        }
+
+        public static WorldTargetTransportInfo CalculateTransportPod(
+            WorldTargetInfoRequest request,
+            WorldTargetRouteInfo route)
+        {
             WorldTargetTransportStatus status = ValidateBasicRequest(request);
             if(status != WorldTargetTransportStatus.Available)
                 return CreateStatus(WorldTargetTransportKind.TransportPod, status);
@@ -35,13 +44,24 @@ namespace QuestTargetInfo
             if(status != WorldTargetTransportStatus.Available)
                 return CreateStatus(WorldTargetTransportKind.TransportPod, status);
 
-            if(!TryGetFlightDistance(
-                request.OriginTile,
-                request.TargetTile,
-                out int distance,
-                out status))
+            int distance;
+
+            if(route.Status == WorldTargetRouteStatus.Available)
             {
-                return CreateStatus(WorldTargetTransportKind.TransportPod, status);
+                distance = route.Distance.DistanceTo;
+            }
+            else
+            {
+                // Keep one-way pod semantics intact: route calculation also checks
+                // return distance, while transport pod only needs outbound distance.
+                if(!TryGetFlightDistance(
+                    request.OriginTile,
+                    request.TargetTile,
+                    out distance,
+                    out status))
+                {
+                    return CreateStatus(WorldTargetTransportKind.TransportPod, status);
+                }
             }
 
             float fuelCost = CalculateFuelCost(
@@ -49,7 +69,11 @@ namespace QuestTargetInfo
                 PodFuelPerTile,
                 request.TargetTile.Layer);
 
-            if(distance > TransportPodMaxLaunchDistance)
+            int maxDistance = GetLayerAdjustedFixedLaunchDistanceMax(
+                TransportPodMaxLaunchDistance,
+                request.TargetTile.Layer);
+
+            if(distance > maxDistance)
             {
                 return CreateStatus(
                     WorldTargetTransportKind.TransportPod,
@@ -68,6 +92,15 @@ namespace QuestTargetInfo
         public static WorldTargetTransportInfo CalculateShuttle(
             WorldTargetInfoRequest request)
         {
+            return CalculateShuttle(
+                request,
+                WorldTargetRouteCalculator.Calculate(request));
+        }
+
+        public static WorldTargetTransportInfo CalculateShuttle(
+            WorldTargetInfoRequest request,
+            WorldTargetRouteInfo route)
+        {
             if(!ModsConfig.OdysseyActive)
                 return CreateStatus(WorldTargetTransportKind.Shuttle, WorldTargetTransportStatus.NoDlc);
 
@@ -79,23 +112,12 @@ namespace QuestTargetInfo
             if(status != WorldTargetTransportStatus.Available)
                 return CreateStatus(WorldTargetTransportKind.Shuttle, status);
 
-            if(!TryGetFlightDistance(
-                request.OriginTile,
-                request.TargetTile,
-                out int distanceTo,
-                out status))
-            {
+            status = GetTransportStatusFromRoute(route);
+            if(status != WorldTargetTransportStatus.Available)
                 return CreateStatus(WorldTargetTransportKind.Shuttle, status);
-            }
 
-            if(!TryGetFlightDistance(
-                request.TargetTile,
-                request.OriginTile,
-                out int distanceReturn,
-                out status))
-            {
-                return CreateStatus(WorldTargetTransportKind.Shuttle, status);
-            }
+            int distanceTo = route.Distance.DistanceTo;
+            int distanceReturn = route.Distance.DistanceReturn;
 
             float fuelTo = CalculateFuelCost(
                 distanceTo,
@@ -181,6 +203,32 @@ namespace QuestTargetInfo
                 WorldTargetTransportStatus.Available,
                 distanceTo: distance,
                 fuelCost: fuelCost);
+        }
+
+        private static WorldTargetTransportStatus GetTransportStatusFromRoute(
+            WorldTargetRouteInfo route)
+        {
+            switch(route.Status)
+            {
+                case WorldTargetRouteStatus.Available:
+                case WorldTargetRouteStatus.SameTile:
+                    return WorldTargetTransportStatus.Available;
+
+                case WorldTargetRouteStatus.InvalidOrigin:
+                    return WorldTargetTransportStatus.InvalidOrigin;
+
+                case WorldTargetRouteStatus.InvalidTarget:
+                    return WorldTargetTransportStatus.InvalidTarget;
+
+                case WorldTargetRouteStatus.NoLayerPath:
+                    return WorldTargetTransportStatus.NoLayerPath;
+
+                case WorldTargetRouteStatus.NoRoute:
+                    return WorldTargetTransportStatus.NoRoute;
+
+                default:
+                    return WorldTargetTransportStatus.NoRoute;
+            }
         }
 
         private static WorldTargetTransportStatus ValidateBasicRequest(
@@ -313,6 +361,21 @@ namespace QuestTargetInfo
             }
 
             return true;
+        }
+
+        internal static int GetLayerAdjustedFixedLaunchDistanceMax(
+            int baseMaxDistance,
+            PlanetLayer targetLayer)
+        {
+            if(baseMaxDistance < 0)
+                return baseMaxDistance;
+
+            float rangeDistanceFactor = targetLayer?.Def?.rangeDistanceFactor ?? 1f;
+
+            if(rangeDistanceFactor <= 0f)
+                rangeDistanceFactor = 1f;
+
+            return Mathf.FloorToInt(baseMaxDistance / rangeDistanceFactor);
         }
 
         private static float CalculateFuelCost(
