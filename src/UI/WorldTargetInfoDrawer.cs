@@ -82,7 +82,7 @@ namespace QuestTargetInfo
                 rect,
                 curY,
                 section,
-                options.LineGap);
+                options);
 
             foreach(WorldTargetInfoLineModel line in section.Lines)
             {
@@ -105,7 +105,7 @@ namespace QuestTargetInfo
             Rect rect,
             float curY,
             WorldTargetInfoSectionModel section,
-            float lineGap)
+            WorldTargetInfoDrawOptions options)
         {
             if(section.Kind == WorldTargetInfoSectionKind.Route)
                 return curY;
@@ -119,7 +119,7 @@ namespace QuestTargetInfo
                     rect,
                     curY,
                     section.Title,
-                    lineGap);
+                    options.LineGap);
             }
 
             float statusWidth = rect.width * HeaderStatusWidthFactor;
@@ -159,11 +159,54 @@ namespace QuestTargetInfo
             }
 
             Text.Anchor = TextAnchor.UpperRight;
-            Widgets.Label(statusRect, section.StatusText);
+            DrawStatusLabel(
+                statusRect,
+                section,
+                options);
 
             Text.Anchor = oldAnchor;
 
-            return curY + height + lineGap;
+            return curY + height + options.LineGap;
+        }
+
+        private static void DrawStatusLabel(
+            Rect rect,
+            WorldTargetInfoSectionModel section,
+            WorldTargetInfoDrawOptions options)
+        {
+            Color oldColor = GUI.color;
+            GUI.color = GetStatusColor(
+                section.StatusKind,
+                options,
+                oldColor);
+
+            Widgets.Label(rect, section.StatusText);
+
+            GUI.color = oldColor;
+        }
+
+        private static Color GetStatusColor(
+            WorldTargetInfoStatusKind statusKind,
+            WorldTargetInfoDrawOptions options,
+            Color defaultColor)
+        {
+            switch(statusKind)
+            {
+                case WorldTargetInfoStatusKind.Available:
+                    return options.AvailableStatusColor;
+
+                case WorldTargetInfoStatusKind.Warning:
+                    return options.WarningStatusColor;
+
+                case WorldTargetInfoStatusKind.Error:
+                    return options.ErrorStatusColor;
+
+                case WorldTargetInfoStatusKind.Unavailable:
+                    return options.UnavailableStatusColor;
+
+                default:
+                    return defaultColor;
+            }
         }
 
         private static float DrawLine(

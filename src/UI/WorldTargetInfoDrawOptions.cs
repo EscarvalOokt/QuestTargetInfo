@@ -1,3 +1,4 @@
+using UnityEngine;
 using Verse;
 
 namespace QuestTargetInfo
@@ -6,27 +7,33 @@ namespace QuestTargetInfo
     {
         public static WorldTargetInfoDrawOptions ForWorldInspectTab()
         {
-            return new WorldTargetInfoDrawOptions
-            {
-                DrawTitle = true,
-                TitleFont = GameFont.Medium,
-                BodyFont = GameFont.Small,
-                TitleBottomGap = 5f,
-                SectionGap = 12f,
-                LineGap = 2f
-            };
+            return CreateDefault(
+                drawTitle: true);
         }
 
         public static WorldTargetInfoDrawOptions ForQuestWindow()
         {
+            return CreateDefault(
+                drawTitle: false);
+        }
+
+        private static WorldTargetInfoDrawOptions CreateDefault(
+            bool drawTitle)
+        {
             return new WorldTargetInfoDrawOptions
             {
-                DrawTitle = false,
+                DrawTitle = drawTitle,
                 TitleFont = GameFont.Medium,
                 BodyFont = GameFont.Small,
                 TitleBottomGap = 5f,
                 SectionGap = 12f,
-                LineGap = 2f
+                LineGap = 2f,
+
+                // Muted RimWorld-friendly status colors.
+                AvailableStatusColor = new Color(0.45f, 0.9f, 0.45f),
+                WarningStatusColor = new Color(1f, 0.82f, 0.35f),
+                ErrorStatusColor = new Color(1f, 0.45f, 0.35f),
+                UnavailableStatusColor = new Color(0.6f, 0.6f, 0.6f)
             };
         }
 
@@ -41,5 +48,13 @@ namespace QuestTargetInfo
         public float SectionGap { get; private set; }
 
         public float LineGap { get; private set; }
+
+        public Color AvailableStatusColor { get; private set; }
+
+        public Color WarningStatusColor { get; private set; }
+
+        public Color ErrorStatusColor { get; private set; }
+
+        public Color UnavailableStatusColor { get; private set; }
     }
 }

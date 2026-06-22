@@ -20,7 +20,7 @@ namespace QuestTargetInfo
 
         private float Height => _collapsed ? CollapsedHeight : InitialSize.y;
 
-        public override Vector2 InitialSize => new Vector2(250f, 640f);
+        public override Vector2 InitialSize => new Vector2(360f, 640f);
 
         public Window_QuestTargetInfo(WorldTargetInfoRequest request)
         {
