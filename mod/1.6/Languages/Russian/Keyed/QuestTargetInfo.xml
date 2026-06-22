@@ -31,4 +31,15 @@
         пределами дальности, максимум {0} клеток.</QuestTargetInfo.AncientTransportPodBeyondMaximumRange>
     <QuestTargetInfo.NotEnoughFuel>Недостаточно топлива.</QuestTargetInfo.NotEnoughFuel>
     <QuestTargetInfo.NotEnoughFuelInGravshipTanks>Недостаточно топлива в баках гравикорабля.</QuestTargetInfo.NotEnoughFuelInGravshipTanks>
+    <QuestTargetInfo.StatusAvailable>Доступно</QuestTargetInfo.StatusAvailable>
+    <QuestTargetInfo.StatusOutOfRange>Вне дальности</QuestTargetInfo.StatusOutOfRange>
+    <QuestTargetInfo.StatusCannotLand>Посадка невозможна</QuestTargetInfo.StatusCannotLand>
+    <QuestTargetInfo.StatusUnavailable>Недоступно</QuestTargetInfo.StatusUnavailable>
+    <QuestTargetInfo.StatusNoVehicle>Нет транспорта</QuestTargetInfo.StatusNoVehicle>
+    <QuestTargetInfo.StatusNoRoute>Нет маршрута</QuestTargetInfo.StatusNoRoute>
+    <QuestTargetInfo.StatusNotEnoughFuel>Недостаточно топлива</QuestTargetInfo.StatusNotEnoughFuel>
+    <QuestTargetInfo.StatusRequiresSignalJammer>Требуется подавитель сигнала</QuestTargetInfo.StatusRequiresSignalJammer>
+    <QuestTargetInfo.StatusInvalidTarget>Некорректная цель</QuestTargetInfo.StatusInvalidTarget>
+    <QuestTargetInfo.FuelEstimate>Оценка расхода топлива: {0}</QuestTargetInfo.FuelEstimate>
+    <QuestTargetInfo.Reason>Причина: {0}</QuestTargetInfo.Reason>
 </LanguageData>

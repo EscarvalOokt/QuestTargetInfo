@@ -1,6 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
-using RimWorld;
 using RimWorld.Planet;
 using UnityEngine;
 using Verse;
@@ -37,9 +34,7 @@ namespace QuestTargetInfo
                 return;
             }
 
-            var lines = WorldTargetInfoLineBuilder
-                .BuildLines(request)
-                .ToList();
+            WorldTargetInfoModel model = WorldTargetInfoModelBuilder.Build(request);
 
             Rect outRect = new Rect(0f, 0f, WinSize.x, WinSize.y)
                 .ContractedBy(10f);
@@ -52,49 +47,12 @@ namespace QuestTargetInfo
 
             Widgets.BeginScrollView(outRect, ref _scrollPosition, viewRect);
 
-            DrawContents(request, lines, viewRect);
+            _lastDrawnHeight = WorldTargetInfoDrawer.Draw(
+                viewRect,
+                model,
+                WorldTargetInfoDrawOptions.ForWorldInspectTab());
 
             Widgets.EndScrollView();
-        }
-
-        private void DrawContents(
-            WorldTargetInfoRequest request,
-            List<string> lines,
-            Rect viewRect)
-        {
-            Text.Font = GameFont.Medium;
-
-            var titleRect = new Rect(
-                viewRect.x,
-                viewRect.y,
-                viewRect.width,
-                30f);
-
-            Widgets.Label(titleRect, GetTitle(request));
-
-            Rect contentRect = viewRect;
-            contentRect.yMin += 35f;
-            contentRect.height = 99999f;
-
-            Text.Font = GameFont.Small;
-
-            var listing = new Listing_Standard();
-            listing.Begin(contentRect);
-
-            foreach(string line in lines)
-                listing.Label(line);
-
-            listing.End();
-
-            _lastDrawnHeight = contentRect.y + listing.CurHeight;
-        }
-
-        private string GetTitle(WorldTargetInfoRequest request)
-        {
-            if(!request.TargetLabel.NullOrEmpty())
-                return request.TargetLabel;
-
-            return "QuestTargetInfo.Header".Translate().ToString();
         }
     }
 }

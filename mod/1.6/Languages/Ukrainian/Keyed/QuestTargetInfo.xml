@@ -30,4 +30,15 @@
         межами дальності, максимум {0} плиток.</QuestTargetInfo.AncientTransportPodBeyondMaximumRange>
     <QuestTargetInfo.NotEnoughFuel>Недостатньо пального.</QuestTargetInfo.NotEnoughFuel>
     <QuestTargetInfo.NotEnoughFuelInGravshipTanks>Недостатньо пального в баках гравкорабля.</QuestTargetInfo.NotEnoughFuelInGravshipTanks>
+    <QuestTargetInfo.StatusAvailable>Доступно</QuestTargetInfo.StatusAvailable>
+    <QuestTargetInfo.StatusOutOfRange>Поза дальністю</QuestTargetInfo.StatusOutOfRange>
+    <QuestTargetInfo.StatusCannotLand>Посадка неможлива</QuestTargetInfo.StatusCannotLand>
+    <QuestTargetInfo.StatusUnavailable>Недоступно</QuestTargetInfo.StatusUnavailable>
+    <QuestTargetInfo.StatusNoVehicle>Немає транспорту</QuestTargetInfo.StatusNoVehicle>
+    <QuestTargetInfo.StatusNoRoute>Немає маршруту</QuestTargetInfo.StatusNoRoute>
+    <QuestTargetInfo.StatusNotEnoughFuel>Недостатньо пального</QuestTargetInfo.StatusNotEnoughFuel>
+    <QuestTargetInfo.StatusRequiresSignalJammer>Потрібен глушник сигналу</QuestTargetInfo.StatusRequiresSignalJammer>
+    <QuestTargetInfo.StatusInvalidTarget>Некоректна ціль</QuestTargetInfo.StatusInvalidTarget>
+    <QuestTargetInfo.FuelEstimate>Оцінка витрат пального: {0}</QuestTargetInfo.FuelEstimate>
+    <QuestTargetInfo.Reason>Причина: {0}</QuestTargetInfo.Reason>
 </LanguageData>

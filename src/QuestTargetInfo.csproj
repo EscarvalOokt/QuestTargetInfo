@@ -73,9 +73,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Info\ViewModels\WorldTargetInfoLineModel.cs" />
+    <Compile Include="Info\ViewModels\WorldTargetInfoModel.cs" />
+    <Compile Include="Info\ViewModels\WorldTargetInfoSectionKind.cs" />
+    <Compile Include="Info\ViewModels\WorldTargetInfoSectionModel.cs" />
+    <Compile Include="Info\ViewModels\WorldTargetInfoStatusKind.cs" />
     <Compile Include="Info\WorldTargetDistanceInfo.cs" />
     <Compile Include="Info\WorldTargetFlyingTransportCalculator.cs" />
     <Compile Include="Info\WorldTargetInfoLineBuilder.cs" />
+    <Compile Include="Info\WorldTargetInfoLineFormatter.cs" />
+    <Compile Include="Info\WorldTargetInfoModelBuilder.cs" />
     <Compile Include="Info\WorldTargetInfoRequest.cs" />
     <Compile Include="Info\WorldTargetInfoSource.cs" />
     <Compile Include="Info\WorldTargetRouteCalculator.cs" />
@@ -88,6 +95,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Patch_Quests_Select.cs" />
     <Compile Include="QuestTargetInfoMod.cs" />
+    <Compile Include="UI\WorldTargetInfoDrawer.cs" />
+    <Compile Include="UI\WorldTargetInfoDrawOptions.cs" />
     <Compile Include="Window_QuestTargetInfo.cs" />
     <Compile Include="WITab_WorldTargetInfo.cs" />
     <Compile Include="WorldTargetInfoSelectionUtility.cs" />

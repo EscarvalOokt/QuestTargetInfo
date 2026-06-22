@@ -30,4 +30,15 @@
         maximalen Reichweite, max. {0} Felder.</QuestTargetInfo.AncientTransportPodBeyondMaximumRange>
     <QuestTargetInfo.NotEnoughFuel>Nicht genug Treibstoff.</QuestTargetInfo.NotEnoughFuel>
     <QuestTargetInfo.NotEnoughFuelInGravshipTanks>Nicht genug Treibstoff in den Gravschiff-Tanks.</QuestTargetInfo.NotEnoughFuelInGravshipTanks>
+    <QuestTargetInfo.StatusAvailable>Verfügbar</QuestTargetInfo.StatusAvailable>
+    <QuestTargetInfo.StatusOutOfRange>Außer Reichweite</QuestTargetInfo.StatusOutOfRange>
+    <QuestTargetInfo.StatusCannotLand>Landung unmöglich</QuestTargetInfo.StatusCannotLand>
+    <QuestTargetInfo.StatusUnavailable>Nicht verfügbar</QuestTargetInfo.StatusUnavailable>
+    <QuestTargetInfo.StatusNoVehicle>Kein Fahrzeug</QuestTargetInfo.StatusNoVehicle>
+    <QuestTargetInfo.StatusNoRoute>Keine Route</QuestTargetInfo.StatusNoRoute>
+    <QuestTargetInfo.StatusNotEnoughFuel>Nicht genug Treibstoff</QuestTargetInfo.StatusNotEnoughFuel>
+    <QuestTargetInfo.StatusRequiresSignalJammer>Signalstörer erforderlich</QuestTargetInfo.StatusRequiresSignalJammer>
+    <QuestTargetInfo.StatusInvalidTarget>Ungültiges Ziel</QuestTargetInfo.StatusInvalidTarget>
+    <QuestTargetInfo.FuelEstimate>Geschätzte Treibstoffkosten: {0}</QuestTargetInfo.FuelEstimate>
+    <QuestTargetInfo.Reason>Grund: {0}</QuestTargetInfo.Reason>
 </LanguageData>

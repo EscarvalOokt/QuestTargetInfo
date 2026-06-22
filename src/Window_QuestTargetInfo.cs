@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
 using RimWorld.Planet;
@@ -15,7 +14,7 @@ namespace QuestTargetInfo
 
         private readonly WorldTargetInfoRequest _request;
 
-        private List<string> _cachedLines;
+        private WorldTargetInfoModel _cachedModel;
         private PlanetTile _cachedOriginTile = PlanetTile.Invalid;
         private PlanetTile _cachedTargetTile = PlanetTile.Invalid;
 
@@ -62,10 +61,14 @@ namespace QuestTargetInfo
             if(_collapsed)
                 return;
 
-            Widgets.DrawLineHorizontal(inRect.x, inRect.y + headerHeight - 1f, inRect.width, Color.gray);
+            Widgets.DrawLineHorizontal(
+                inRect.x,
+                inRect.y + headerHeight - 1f,
+                inRect.width,
+                Color.gray);
 
-            List<string> lines = GetLinesCached();
-            if(lines.Count == 0)
+            WorldTargetInfoModel model = GetModelCached();
+            if(model == null || model.Sections.Count == 0)
             {
                 Close();
                 return;
@@ -77,13 +80,10 @@ namespace QuestTargetInfo
                 inRect.width,
                 inRect.height - headerHeight - 10f);
 
-            var listing = new Listing_Standard();
-            listing.Begin(contentRect);
-
-            foreach(string line in lines)
-                listing.Label(line);
-
-            listing.End();
+            WorldTargetInfoDrawer.Draw(
+                contentRect,
+                model,
+                WorldTargetInfoDrawOptions.ForQuestWindow());
         }
 
         private bool ShouldClose()
@@ -170,18 +170,18 @@ namespace QuestTargetInfo
                     : "QuestTargetInfo.CollapseTooltip".Translate());
         }
 
-        private List<string> GetLinesCached()
+        private WorldTargetInfoModel GetModelCached()
         {
-            if(_cachedLines == null
+            if(_cachedModel == null
                 || _cachedOriginTile != _request.OriginTile
                 || _cachedTargetTile != _request.TargetTile)
             {
-                _cachedLines = WorldTargetInfoLineBuilder.BuildLines(_request).ToList();
+                _cachedModel = WorldTargetInfoModelBuilder.Build(_request);
                 _cachedOriginTile = _request.OriginTile;
                 _cachedTargetTile = _request.TargetTile;
             }
 
-            return _cachedLines;
+            return _cachedModel;
         }
     }
 }

@@ -29,4 +29,15 @@
         max {0} tiles.</QuestTargetInfo.AncientTransportPodBeyondMaximumRange>
     <QuestTargetInfo.NotEnoughFuel>Not enough fuel.</QuestTargetInfo.NotEnoughFuel>
     <QuestTargetInfo.NotEnoughFuelInGravshipTanks>Not enough fuel in gravship tanks.</QuestTargetInfo.NotEnoughFuelInGravshipTanks>
+    <QuestTargetInfo.StatusAvailable>Available</QuestTargetInfo.StatusAvailable>
+    <QuestTargetInfo.StatusOutOfRange>Out of range</QuestTargetInfo.StatusOutOfRange>
+    <QuestTargetInfo.StatusCannotLand>Cannot land</QuestTargetInfo.StatusCannotLand>
+    <QuestTargetInfo.StatusUnavailable>Unavailable</QuestTargetInfo.StatusUnavailable>
+    <QuestTargetInfo.StatusNoVehicle>No vehicle</QuestTargetInfo.StatusNoVehicle>
+    <QuestTargetInfo.StatusNoRoute>No route</QuestTargetInfo.StatusNoRoute>
+    <QuestTargetInfo.StatusNotEnoughFuel>Not enough fuel</QuestTargetInfo.StatusNotEnoughFuel>
+    <QuestTargetInfo.StatusRequiresSignalJammer>Signal jammer required</QuestTargetInfo.StatusRequiresSignalJammer>
+    <QuestTargetInfo.StatusInvalidTarget>Invalid target</QuestTargetInfo.StatusInvalidTarget>
+    <QuestTargetInfo.FuelEstimate>Fuel estimate: {0}</QuestTargetInfo.FuelEstimate>
+    <QuestTargetInfo.Reason>Reason: {0}</QuestTargetInfo.Reason>
 </LanguageData>
