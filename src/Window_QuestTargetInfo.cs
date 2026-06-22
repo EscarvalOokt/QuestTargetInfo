@@ -17,6 +17,7 @@ namespace QuestTargetInfo
         private WorldTargetInfoModel _cachedModel;
         private PlanetTile _cachedOriginTile = PlanetTile.Invalid;
         private PlanetTile _cachedTargetTile = PlanetTile.Invalid;
+        private int _cachedSettingsVersion = -1;
 
         private float Height => _collapsed ? CollapsedHeight : InitialSize.y;
 
@@ -91,7 +92,8 @@ namespace QuestTargetInfo
             switch(_request.Source)
             {
                 case WorldTargetInfoSource.Quest:
-                    return !Find.WindowStack.Windows.OfType<MainTabWindow_Quests>().Any();
+                    return !QuestTargetInfoMod.Settings.ShowQuestTravelWindow
+                        || !Find.WindowStack.Windows.OfType<MainTabWindow_Quests>().Any();
 
                 case WorldTargetInfoSource.WorldInspectPane:
                     return false;
@@ -172,13 +174,17 @@ namespace QuestTargetInfo
 
         private WorldTargetInfoModel GetModelCached()
         {
+            int settingsVersion = QuestTargetInfoMod.Settings.Version;
+
             if(_cachedModel == null
                 || _cachedOriginTile != _request.OriginTile
-                || _cachedTargetTile != _request.TargetTile)
+                || _cachedTargetTile != _request.TargetTile
+                || _cachedSettingsVersion != settingsVersion)
             {
                 _cachedModel = WorldTargetInfoModelBuilder.Build(_request);
                 _cachedOriginTile = _request.OriginTile;
                 _cachedTargetTile = _request.TargetTile;
+                _cachedSettingsVersion = settingsVersion;
             }
 
             return _cachedModel;

@@ -14,6 +14,9 @@ namespace QuestTargetInfo
         {
             WorldTargetInfoWindowUtility.CloseOpenedWindows();
 
+            if(!QuestTargetInfoMod.Settings.ShowQuestTravelWindow)
+                return;
+
             FieldInfo questField = AccessTools.Field(typeof(MainTabWindow_Quests), "selected");
             if(!(questField.GetValue(__instance) is Quest currentQuest))
                 return;

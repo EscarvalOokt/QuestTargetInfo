@@ -14,6 +14,12 @@ namespace QuestTargetInfo
 
         public static void Postfix(ref IEnumerable<InspectTabBase> __result)
         {
+            if(!QuestTargetInfoMod.Settings.ShowWorldInspectTravelTab)
+            {
+                TargetInfoTab.Notify_RequestUnavailable();
+                return;
+            }
+
             if(!WorldTargetInfoSelectionUtility.TryCreateRequest(
                 out WorldTargetInfoRequest _))
             {

@@ -14,11 +14,18 @@ namespace QuestTargetInfo
         private bool _hasLastRequestKey;
         private WorldTargetInfoRequestKey _lastRequestKey;
         private WorldTargetInfoModel _cachedModel;
+        private int _cachedSettingsVersion = -1;
 
         public override bool IsVisible
         {
             get
             {
+                if(!QuestTargetInfoMod.Settings.ShowWorldInspectTravelTab)
+                {
+                    Notify_RequestUnavailable();
+                    return false;
+                }
+
                 bool visible = WorldTargetInfoSelectionUtility.TryCreateRequest(
                     out WorldTargetInfoRequest _);
 
@@ -39,11 +46,18 @@ namespace QuestTargetInfo
         {
             _hasLastRequestKey = false;
             _cachedModel = null;
+            _cachedSettingsVersion = -1;
             ResetScrollState();
         }
 
         protected override void FillTab()
         {
+            if(!QuestTargetInfoMod.Settings.ShowWorldInspectTravelTab)
+            {
+                Notify_RequestUnavailable();
+                return;
+            }
+
             if(!WorldTargetInfoSelectionUtility.TryCreateRequest(
                 out WorldTargetInfoRequest request))
             {
@@ -76,11 +90,15 @@ namespace QuestTargetInfo
             WorldTargetInfoRequest request)
         {
             var currentKey = WorldTargetInfoRequestKey.From(request);
+            int settingsVersion = QuestTargetInfoMod.Settings.Version;
 
-            if(!_hasLastRequestKey || currentKey != _lastRequestKey)
+            if(!_hasLastRequestKey
+                || currentKey != _lastRequestKey
+                || _cachedSettingsVersion != settingsVersion)
             {
                 _lastRequestKey = currentKey;
                 _hasLastRequestKey = true;
+                _cachedSettingsVersion = settingsVersion;
                 _cachedModel = WorldTargetInfoModelBuilder.Build(request);
                 ResetScrollState();
                 return _cachedModel;

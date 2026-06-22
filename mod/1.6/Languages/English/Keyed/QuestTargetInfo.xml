@@ -58,4 +58,11 @@
     <QuestTargetInfo.TilesValue>{0} tiles</QuestTargetInfo.TilesValue>
     <QuestTargetInfo.TotalFuel>Total fuel</QuestTargetInfo.TotalFuel>
     <QuestTargetInfo.TransportPod>Transport pod</QuestTargetInfo.TransportPod>
+
+    <QuestTargetInfo.SettingsCategory>Quest Target Info</QuestTargetInfo.SettingsCategory>
+    <QuestTargetInfo.SettingShowQuestTravelWindow>Show quest travel window</QuestTargetInfo.SettingShowQuestTravelWindow>
+    <QuestTargetInfo.SettingShowWorldInspectTravelTab>Show world inspect Travel tab</QuestTargetInfo.SettingShowWorldInspectTravelTab>
+    <QuestTargetInfo.SettingShowAncientPodCompatibilityLine>Show ancient pod compatibility line</QuestTargetInfo.SettingShowAncientPodCompatibilityLine>
+    <QuestTargetInfo.SettingShowFuelAdjustedDistance>Show layer-adjusted distance</QuestTargetInfo.SettingShowFuelAdjustedDistance>
+    <QuestTargetInfo.SettingShowUnavailableTransports>Show unavailable transports</QuestTargetInfo.SettingShowUnavailableTransports>
 </LanguageData>

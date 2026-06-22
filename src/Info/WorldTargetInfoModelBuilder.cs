@@ -18,22 +18,40 @@ namespace QuestTargetInfo
             if(route.Status == WorldTargetRouteStatus.SameTile)
                 return new WorldTargetInfoModel(GetTitle(request), sections);
 
-            sections.Add(BuildTransportSection(
-                WorldTargetFlyingTransportCalculator.CalculateTransportPod(request, route)));
+            WorldTargetTransportInfo transportPod =
+                WorldTargetFlyingTransportCalculator.CalculateTransportPod(request, route);
+
+            if(ShouldIncludeTransportSection(transportPod))
+                sections.Add(BuildTransportSection(transportPod));
 
             WorldTargetTransportInfo shuttle =
                 WorldTargetFlyingTransportCalculator.CalculateShuttle(request, route);
 
-            if(shuttle.Status != WorldTargetTransportStatus.NoDlc)
+            if(ShouldIncludeTransportSection(shuttle))
                 sections.Add(BuildTransportSection(shuttle));
 
             WorldTargetTransportInfo gravship =
                 WorldTargetFlyingTransportCalculator.CalculateGravship(request);
 
-            if(gravship.Status != WorldTargetTransportStatus.NoDlc)
+            if(ShouldIncludeTransportSection(gravship))
                 sections.Add(BuildTransportSection(gravship));
 
             return new WorldTargetInfoModel(GetTitle(request), sections);
+        }
+
+        private static bool ShouldIncludeTransportSection(
+            WorldTargetTransportInfo info)
+        {
+            if(info.Status == WorldTargetTransportStatus.NoDlc)
+                return false;
+
+            if(!QuestTargetInfoMod.Settings.ShowUnavailableTransports
+                && !info.IsAvailable)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         private static WorldTargetInfoSectionModel BuildRouteSection(
@@ -114,6 +132,9 @@ namespace QuestTargetInfo
             WorldTargetRouteInfo route,
             List<WorldTargetInfoLineModel> lines)
         {
+            if(!QuestTargetInfoMod.Settings.ShowFuelAdjustedDistance)
+                return;
+
             if(!route.HasDistance)
                 return;
 
@@ -400,9 +421,12 @@ namespace QuestTargetInfo
             WorldTargetTransportInfo info,
             List<WorldTargetInfoLineModel> lines)
         {
+            if(!QuestTargetInfoMod.Settings.ShowAncientPodCompatibilityLine)
+                return;
+
             int ancientPodMaxDistance =
                 WorldTargetFlyingTransportCalculator.GetLayerAdjustedFixedLaunchDistanceMax(
-                    WorldTargetFlyingTransportCalculator.AncientTransportPodMaxLaunchDistance,
+                    WorldTargetTransportConstants.AncientTransportPodMaxLaunchDistance,
                     info.FlightDistance);
 
             if(ancientPodMaxDistance < 0)

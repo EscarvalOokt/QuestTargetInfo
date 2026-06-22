@@ -8,25 +8,6 @@ namespace QuestTargetInfo
 {
     internal static class WorldTargetFlyingTransportCalculator
     {
-        private const float ShuttleFuelPerTile = 3f;
-        private const float PodFuelPerTile = 2.25f;
-        private const float MinFuel = 50f;
-
-        // PassengerShuttle defines fixedLaunchDistanceMax = 62.
-        internal const int ShuttleMaxLaunchDistance = 62;
-
-        // Vanilla maximum regular transport pod range.
-        // MechanoidDropPod defines fixedLaunchDistanceMax = 67 with the XML comment:
-        // "maximum regular transport pod range".
-        // Regular TransportPod does not define fixedLaunchDistanceMax because its range is fuel-based.
-        internal const int TransportPodMaxLaunchDistance = 67;
-
-        // AncientTransportPod defines fixedLaunchDistanceMax = 53 with the XML comment:
-        // "80% of full transport pod range".
-        // The game does not clearly expose this before launch target selection,
-        // so the info window shows it as an additional compatibility warning.
-        internal const int AncientTransportPodMaxLaunchDistance = 53;
-
         public static WorldTargetTransportInfo CalculateTransportPod(
             WorldTargetInfoRequest request)
         {
@@ -71,11 +52,11 @@ namespace QuestTargetInfo
                 CreateFlightDistanceContext(
                     distance,
                     request.TargetTile.Layer,
-                    TransportPodMaxLaunchDistance);
+                    WorldTargetTransportConstants.TransportPodMaxLaunchDistance);
 
             float fuelCost = CalculateFuelCost(
                 distance,
-                PodFuelPerTile,
+                WorldTargetTransportConstants.TransportPodFuelPerTile,
                 request.TargetTile.Layer);
 
             if(distance > flightDistance.MaxDistance)
@@ -130,22 +111,22 @@ namespace QuestTargetInfo
                 CreateFlightDistanceContext(
                     distanceTo,
                     request.TargetTile.Layer,
-                    ShuttleMaxLaunchDistance);
+                    WorldTargetTransportConstants.ShuttleMaxLaunchDistance);
 
             WorldTargetFlightDistanceContext returnFlightDistance =
                 CreateFlightDistanceContext(
                     distanceReturn,
                     request.OriginTile.Layer,
-                    ShuttleMaxLaunchDistance);
+                    WorldTargetTransportConstants.ShuttleMaxLaunchDistance);
 
             float fuelTo = CalculateFuelCost(
                 distanceTo,
-                ShuttleFuelPerTile,
+                WorldTargetTransportConstants.ShuttleFuelPerTile,
                 request.TargetTile.Layer);
 
             float fuelReturn = CalculateFuelCost(
                 distanceReturn,
-                ShuttleFuelPerTile,
+                WorldTargetTransportConstants.ShuttleFuelPerTile,
                 request.OriginTile.Layer);
 
             if(distanceTo > flightDistance.MaxDistance)
@@ -479,7 +460,7 @@ namespace QuestTargetInfo
             PlanetLayer targetLayer)
         {
             return Mathf.Max(
-                MinFuel,
+                WorldTargetTransportConstants.MinimumFuelCost,
                 distance * fuelPerTile * GetLayerRangeDistanceFactor(targetLayer));
         }
 

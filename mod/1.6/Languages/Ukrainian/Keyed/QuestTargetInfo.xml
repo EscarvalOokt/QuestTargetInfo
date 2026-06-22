@@ -59,4 +59,12 @@
     <QuestTargetInfo.TilesValue>{0} плиток</QuestTargetInfo.TilesValue>
     <QuestTargetInfo.TotalFuel>Пальне разом</QuestTargetInfo.TotalFuel>
     <QuestTargetInfo.TransportPod>Транспортна капсула</QuestTargetInfo.TransportPod>
+
+    <QuestTargetInfo.SettingsCategory>Quest Target Info</QuestTargetInfo.SettingsCategory>
+    <QuestTargetInfo.SettingShowQuestTravelWindow>Показувати вікно шляху для квестів</QuestTargetInfo.SettingShowQuestTravelWindow>
+    <QuestTargetInfo.SettingShowWorldInspectTravelTab>Показувати вкладку шляху в панелі світу</QuestTargetInfo.SettingShowWorldInspectTravelTab>
+    <QuestTargetInfo.SettingShowAncientPodCompatibilityLine>Показувати рядок сумісності стародавньої
+        капсули</QuestTargetInfo.SettingShowAncientPodCompatibilityLine>
+    <QuestTargetInfo.SettingShowFuelAdjustedDistance>Показувати відстань з урахуванням шару</QuestTargetInfo.SettingShowFuelAdjustedDistance>
+    <QuestTargetInfo.SettingShowUnavailableTransports>Показувати недоступний транспорт</QuestTargetInfo.SettingShowUnavailableTransports>
 </LanguageData>

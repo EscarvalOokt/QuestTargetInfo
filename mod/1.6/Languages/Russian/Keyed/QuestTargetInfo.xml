@@ -60,4 +60,12 @@
     <QuestTargetInfo.TilesValue>{0} клеток</QuestTargetInfo.TilesValue>
     <QuestTargetInfo.TotalFuel>Топливо всего</QuestTargetInfo.TotalFuel>
     <QuestTargetInfo.TransportPod>Транспортная капсула</QuestTargetInfo.TransportPod>
+
+    <QuestTargetInfo.SettingsCategory>Quest Target Info</QuestTargetInfo.SettingsCategory>
+    <QuestTargetInfo.SettingShowQuestTravelWindow>Показывать окно пути для квестов</QuestTargetInfo.SettingShowQuestTravelWindow>
+    <QuestTargetInfo.SettingShowWorldInspectTravelTab>Показывать вкладку пути в панели мира</QuestTargetInfo.SettingShowWorldInspectTravelTab>
+    <QuestTargetInfo.SettingShowAncientPodCompatibilityLine>Показывать строку совместимости древней
+        капсулы</QuestTargetInfo.SettingShowAncientPodCompatibilityLine>
+    <QuestTargetInfo.SettingShowFuelAdjustedDistance>Показывать дистанцию с учётом слоя</QuestTargetInfo.SettingShowFuelAdjustedDistance>
+    <QuestTargetInfo.SettingShowUnavailableTransports>Показывать недоступный транспорт</QuestTargetInfo.SettingShowUnavailableTransports>
 </LanguageData>

@@ -59,4 +59,12 @@
     <QuestTargetInfo.TilesValue>{0} Felder</QuestTargetInfo.TilesValue>
     <QuestTargetInfo.TotalFuel>Treibstoff gesamt</QuestTargetInfo.TotalFuel>
     <QuestTargetInfo.TransportPod>Transportkapsel</QuestTargetInfo.TransportPod>
+
+    <QuestTargetInfo.SettingsCategory>Quest Target Info</QuestTargetInfo.SettingsCategory>
+    <QuestTargetInfo.SettingShowQuestTravelWindow>Quest-Reiseinfofenster anzeigen</QuestTargetInfo.SettingShowQuestTravelWindow>
+    <QuestTargetInfo.SettingShowWorldInspectTravelTab>Reise-Reiter im Welt-Inspektorfenster anzeigen</QuestTargetInfo.SettingShowWorldInspectTravelTab>
+    <QuestTargetInfo.SettingShowAncientPodCompatibilityLine>Kompatibilitätszeile für antike Kapsel
+        anzeigen</QuestTargetInfo.SettingShowAncientPodCompatibilityLine>
+    <QuestTargetInfo.SettingShowFuelAdjustedDistance>Schichtangepasste Entfernung anzeigen</QuestTargetInfo.SettingShowFuelAdjustedDistance>
+    <QuestTargetInfo.SettingShowUnavailableTransports>Nicht verfügbare Transporte anzeigen</QuestTargetInfo.SettingShowUnavailableTransports>
 </LanguageData>

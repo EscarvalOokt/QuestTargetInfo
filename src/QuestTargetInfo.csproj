@@ -90,6 +90,7 @@
     <Compile Include="Info\WorldTargetRouteCalculator.cs" />
     <Compile Include="Info\WorldTargetRouteInfo.cs" />
     <Compile Include="Info\WorldTargetRouteStatus.cs" />
+    <Compile Include="Info\WorldTargetTransportConstants.cs" />
     <Compile Include="Info\WorldTargetTransportInfo.cs" />
     <Compile Include="Info\WorldTargetTransportKind.cs" />
     <Compile Include="Info\WorldTargetTransportStatus.cs" />
@@ -97,6 +98,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Patch_Quests_Select.cs" />
     <Compile Include="QuestTargetInfoMod.cs" />
+    <Compile Include="Settings\QuestTargetInfoSettings.cs" />
+    <Compile Include="Settings\QuestTargetInfoSettingsDrawer.cs" />
     <Compile Include="UI\WorldTargetInfoDrawer.cs" />
     <Compile Include="UI\WorldTargetInfoDrawOptions.cs" />
     <Compile Include="Window_QuestTargetInfo.cs" />
