@@ -64,29 +64,33 @@ namespace QuestTargetInfo
                 }
             }
 
+            WorldTargetFlightDistanceContext flightDistance =
+                CreateFlightDistanceContext(
+                    distance,
+                    request.TargetTile.Layer,
+                    TransportPodMaxLaunchDistance);
+
             float fuelCost = CalculateFuelCost(
                 distance,
                 PodFuelPerTile,
                 request.TargetTile.Layer);
 
-            int maxDistance = GetLayerAdjustedFixedLaunchDistanceMax(
-                TransportPodMaxLaunchDistance,
-                request.TargetTile.Layer);
-
-            if(distance > maxDistance)
+            if(distance > flightDistance.MaxDistance)
             {
                 return CreateStatus(
                     WorldTargetTransportKind.TransportPod,
                     WorldTargetTransportStatus.BeyondMaximumRange,
                     distanceTo: distance,
-                    fuelCost: fuelCost);
+                    fuelCost: fuelCost,
+                    flightDistance: flightDistance);
             }
 
             return new WorldTargetTransportInfo(
                 WorldTargetTransportKind.TransportPod,
                 WorldTargetTransportStatus.Available,
                 distanceTo: distance,
-                fuelCost: fuelCost);
+                fuelCost: fuelCost,
+                flightDistance: flightDistance);
         }
 
         public static WorldTargetTransportInfo CalculateShuttle(
@@ -119,6 +123,11 @@ namespace QuestTargetInfo
             int distanceTo = route.Distance.DistanceTo;
             int distanceReturn = route.Distance.DistanceReturn;
 
+            WorldTargetFlightDistanceContext flightDistance =
+                CreateFlightDistanceContext(
+                    distanceTo,
+                    request.TargetTile.Layer);
+
             float fuelTo = CalculateFuelCost(
                 distanceTo,
                 ShuttleFuelPerTile,
@@ -136,7 +145,8 @@ namespace QuestTargetInfo
                 distanceReturn: distanceReturn,
                 fuelCost: fuelTo,
                 fuelReturnCost: fuelReturn,
-                fuelTotalCost: fuelTo + fuelReturn);
+                fuelTotalCost: fuelTo + fuelReturn,
+                flightDistance: flightDistance);
         }
 
         public static WorldTargetTransportInfo CalculateGravship(
@@ -166,8 +176,11 @@ namespace QuestTargetInfo
                 return CreateStatus(WorldTargetTransportKind.Gravship, WorldTargetTransportStatus.RouteUnavailable);
             }
 
-            int maxDistance = Mathf.FloorToInt(
-                engine.MaxLaunchDistance / request.TargetTile.Layer.Def.rangeDistanceFactor);
+            WorldTargetFlightDistanceContext flightDistance =
+                CreateFlightDistanceContext(
+                    distance,
+                    request.TargetTile.Layer,
+                    engine.MaxLaunchDistance);
 
             if(fuelCost > engine.TotalFuel)
             {
@@ -175,16 +188,18 @@ namespace QuestTargetInfo
                     WorldTargetTransportKind.Gravship,
                     WorldTargetTransportStatus.NotEnoughFuel,
                     distanceTo: distance,
-                    fuelCost: fuelCost);
+                    fuelCost: fuelCost,
+                    flightDistance: flightDistance);
             }
 
-            if(distance > maxDistance)
+            if(distance > flightDistance.MaxDistance)
             {
                 return CreateStatus(
                     WorldTargetTransportKind.Gravship,
                     WorldTargetTransportStatus.BeyondMaximumRange,
                     distanceTo: distance,
-                    fuelCost: fuelCost);
+                    fuelCost: fuelCost,
+                    flightDistance: flightDistance);
             }
 
             status = ValidateGravshipLandingTarget(request, out string reason);
@@ -195,14 +210,16 @@ namespace QuestTargetInfo
                     status,
                     distanceTo: distance,
                     fuelCost: fuelCost,
-                    reason: reason);
+                    reason: reason,
+                    flightDistance: flightDistance);
             }
 
             return new WorldTargetTransportInfo(
                 WorldTargetTransportKind.Gravship,
                 WorldTargetTransportStatus.Available,
                 distanceTo: distance,
-                fuelCost: fuelCost);
+                fuelCost: fuelCost,
+                flightDistance: flightDistance);
         }
 
         private static WorldTargetTransportStatus GetTransportStatusFromRoute(
@@ -367,15 +384,68 @@ namespace QuestTargetInfo
             int baseMaxDistance,
             PlanetLayer targetLayer)
         {
-            if(baseMaxDistance < 0)
-                return baseMaxDistance;
+            return GetLayerAdjustedFixedLaunchDistanceMax(
+                baseMaxDistance,
+                GetLayerRangeDistanceFactor(targetLayer));
+        }
 
-            float rangeDistanceFactor = targetLayer?.Def?.rangeDistanceFactor ?? 1f;
+        internal static int GetLayerAdjustedFixedLaunchDistanceMax(
+            int baseMaxDistance,
+            WorldTargetFlightDistanceContext flightDistance)
+        {
+            return GetLayerAdjustedFixedLaunchDistanceMax(
+                baseMaxDistance,
+                flightDistance.TargetLayerRangeDistanceFactor);
+        }
+
+        private static int GetLayerAdjustedFixedLaunchDistanceMax(
+            float baseMaxDistance,
+            float rangeDistanceFactor)
+        {
+            if(baseMaxDistance < 0f)
+                return Mathf.FloorToInt(baseMaxDistance);
 
             if(rangeDistanceFactor <= 0f)
                 rangeDistanceFactor = 1f;
 
             return Mathf.FloorToInt(baseMaxDistance / rangeDistanceFactor);
+        }
+
+        private static float GetLayerRangeDistanceFactor(
+            PlanetLayer targetLayer)
+        {
+            float rangeDistanceFactor = targetLayer?.Def?.rangeDistanceFactor ?? 1f;
+
+            if(rangeDistanceFactor <= 0f)
+                return 1f;
+
+            return rangeDistanceFactor;
+        }
+
+        private static int CalculateFuelAdjustedDistance(
+            int distance,
+            PlanetLayer targetLayer)
+        {
+            return Mathf.CeilToInt(
+                distance * GetLayerRangeDistanceFactor(targetLayer));
+        }
+
+        private static WorldTargetFlightDistanceContext CreateFlightDistanceContext(
+            int distance,
+            PlanetLayer targetLayer,
+            float baseMaxDistance = -1f)
+        {
+            float rangeDistanceFactor = GetLayerRangeDistanceFactor(targetLayer);
+
+            int maxDistance = baseMaxDistance >= 0f
+                ? GetLayerAdjustedFixedLaunchDistanceMax(baseMaxDistance, rangeDistanceFactor)
+                : -1;
+
+            return new WorldTargetFlightDistanceContext(
+                distance,
+                rangeDistanceFactor,
+                maxDistance,
+                CalculateFuelAdjustedDistance(distance, targetLayer));
         }
 
         private static float CalculateFuelCost(
@@ -385,7 +455,7 @@ namespace QuestTargetInfo
         {
             return Mathf.Max(
                 MinFuel,
-                distance * fuelPerTile * targetLayer.Def.rangeDistanceFactor);
+                distance * fuelPerTile * GetLayerRangeDistanceFactor(targetLayer));
         }
 
         private static WorldTargetTransportInfo CreateStatus(
@@ -393,14 +463,16 @@ namespace QuestTargetInfo
             WorldTargetTransportStatus status,
             int distanceTo = -1,
             float fuelCost = -1f,
-            string reason = null)
+            string reason = null,
+            WorldTargetFlightDistanceContext flightDistance = default)
         {
             return new WorldTargetTransportInfo(
                 kind,
                 status,
                 distanceTo: distanceTo,
                 fuelCost: fuelCost,
-                reason: reason);
+                reason: reason,
+                flightDistance: flightDistance);
         }
     }
 }

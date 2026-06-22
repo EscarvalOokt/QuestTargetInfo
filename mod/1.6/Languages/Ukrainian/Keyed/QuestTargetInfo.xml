@@ -33,6 +33,7 @@
     <QuestTargetInfo.NotEnoughFuelInGravshipTanks>Недостатньо пального в баках гравкорабля.</QuestTargetInfo.NotEnoughFuelInGravshipTanks>
     <QuestTargetInfo.NoVehicle>Транспорт не знайдено.</QuestTargetInfo.NoVehicle>
     <QuestTargetInfo.OpenWorldTargetInfoTooltip>Показати інформацію про шлях</QuestTargetInfo.OpenWorldTargetInfoTooltip>
+    <QuestTargetInfo.Range>Дальність</QuestTargetInfo.Range>
     <QuestTargetInfo.RangeValue>{0} / {1} плиток</QuestTargetInfo.RangeValue>
     <QuestTargetInfo.Reason>Причина: {0}</QuestTargetInfo.Reason>
     <QuestTargetInfo.RequiresSignalJammer>Потрібен глушник сигналу.</QuestTargetInfo.RequiresSignalJammer>

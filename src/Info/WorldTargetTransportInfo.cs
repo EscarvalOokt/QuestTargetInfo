@@ -10,7 +10,8 @@ namespace QuestTargetInfo
             float fuelCost = -1f,
             float fuelReturnCost = -1f,
             float fuelTotalCost = -1f,
-            string reason = null)
+            string reason = null,
+            WorldTargetFlightDistanceContext flightDistance = default)
         {
             Kind = kind;
             Status = status;
@@ -20,6 +21,7 @@ namespace QuestTargetInfo
             FuelReturnCost = fuelReturnCost;
             FuelTotalCost = fuelTotalCost;
             Reason = reason;
+            FlightDistance = flightDistance;
         }
 
         public WorldTargetTransportKind Kind { get; }
@@ -37,6 +39,8 @@ namespace QuestTargetInfo
         public float FuelTotalCost { get; }
 
         public string Reason { get; }
+
+        public WorldTargetFlightDistanceContext FlightDistance { get; }
 
         public bool IsAvailable => Status == WorldTargetTransportStatus.Available;
     }

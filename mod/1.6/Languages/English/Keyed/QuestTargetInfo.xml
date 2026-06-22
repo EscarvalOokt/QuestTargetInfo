@@ -32,6 +32,7 @@
     <QuestTargetInfo.NotEnoughFuelInGravshipTanks>Not enough fuel in gravship tanks.</QuestTargetInfo.NotEnoughFuelInGravshipTanks>
     <QuestTargetInfo.NoVehicle>No vehicle found.</QuestTargetInfo.NoVehicle>
     <QuestTargetInfo.OpenWorldTargetInfoTooltip>Show travel info</QuestTargetInfo.OpenWorldTargetInfoTooltip>
+    <QuestTargetInfo.Range>Range</QuestTargetInfo.Range>
     <QuestTargetInfo.RangeValue>{0} / {1} tiles</QuestTargetInfo.RangeValue>
     <QuestTargetInfo.Reason>Reason: {0}</QuestTargetInfo.Reason>
     <QuestTargetInfo.RequiresSignalJammer>Requires signal jammer.</QuestTargetInfo.RequiresSignalJammer>

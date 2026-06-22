@@ -34,6 +34,7 @@
     <QuestTargetInfo.NotEnoughFuelInGravshipTanks>Недостаточно топлива в баках гравикорабля.</QuestTargetInfo.NotEnoughFuelInGravshipTanks>
     <QuestTargetInfo.NoVehicle>Транспорт не найден.</QuestTargetInfo.NoVehicle>
     <QuestTargetInfo.OpenWorldTargetInfoTooltip>Показать информацию о пути</QuestTargetInfo.OpenWorldTargetInfoTooltip>
+    <QuestTargetInfo.Range>Дальность</QuestTargetInfo.Range>
     <QuestTargetInfo.RangeValue>{0} / {1} клеток</QuestTargetInfo.RangeValue>
     <QuestTargetInfo.Reason>Причина: {0}</QuestTargetInfo.Reason>
     <QuestTargetInfo.RequiresSignalJammer>Требуется подавитель сигнала.</QuestTargetInfo.RequiresSignalJammer>

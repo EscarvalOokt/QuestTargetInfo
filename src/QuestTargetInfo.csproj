@@ -79,6 +79,7 @@
     <Compile Include="Info\ViewModels\WorldTargetInfoSectionModel.cs" />
     <Compile Include="Info\ViewModels\WorldTargetInfoStatusKind.cs" />
     <Compile Include="Info\WorldTargetDistanceInfo.cs" />
+    <Compile Include="Info\WorldTargetFlightDistanceContext.cs" />
     <Compile Include="Info\WorldTargetFlyingTransportCalculator.cs" />
     <Compile Include="Info\WorldTargetInfoLineBuilder.cs" />
     <Compile Include="Info\WorldTargetInfoLineFormatter.cs" />

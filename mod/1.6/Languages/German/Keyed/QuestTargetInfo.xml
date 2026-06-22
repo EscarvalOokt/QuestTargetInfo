@@ -33,6 +33,7 @@
     <QuestTargetInfo.NotEnoughFuelInGravshipTanks>Nicht genug Treibstoff in den Gravschiff-Tanks.</QuestTargetInfo.NotEnoughFuelInGravshipTanks>
     <QuestTargetInfo.NoVehicle>Kein Fahrzeug gefunden.</QuestTargetInfo.NoVehicle>
     <QuestTargetInfo.OpenWorldTargetInfoTooltip>Reiseinfo anzeigen</QuestTargetInfo.OpenWorldTargetInfoTooltip>
+    <QuestTargetInfo.Range>Reichweite</QuestTargetInfo.Range>
     <QuestTargetInfo.RangeValue>{0} / {1} Felder</QuestTargetInfo.RangeValue>
     <QuestTargetInfo.Reason>Grund: {0}</QuestTargetInfo.Reason>
     <QuestTargetInfo.RequiresSignalJammer>Signalstörer erforderlich.</QuestTargetInfo.RequiresSignalJammer>
