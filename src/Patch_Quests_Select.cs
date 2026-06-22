@@ -1,7 +1,7 @@
-﻿using HarmonyLib;
+using System.Linq;
+using HarmonyLib;
 using RimWorld;
 using RimWorld.Planet;
-using System.Linq;
 using Verse;
 
 namespace QuestTargetInfo
@@ -14,31 +14,63 @@ namespace QuestTargetInfo
             CloseOpenedWindows();
 
             var questField = AccessTools.Field(typeof(MainTabWindow_Quests), "selected");
-            if (!(questField.GetValue(__instance) is Quest currentQuest))
+            if(!(questField.GetValue(__instance) is Quest currentQuest))
                 return;
 
-            if (currentQuest.QuestLookTargets.Count() != 1)
+            if(currentQuest.QuestLookTargets.Count() != 1)
                 return;
 
-            var target = currentQuest.QuestLookTargets.FirstOrDefault();
-            if (!IsValid(target))
+            GlobalTargetInfo target = currentQuest.QuestLookTargets.FirstOrDefault();
+            if(!TryCreateRequest(target, out WorldTargetInfoRequest request))
                 return;
 
-            Find.WindowStack.Add(new Window_QuestTargetInfo(target));
+            Find.WindowStack.Add(new Window_QuestTargetInfo(request));
         }
 
         private static void CloseOpenedWindows()
         {
-            if (Find.WindowStack.Windows.OfType<Window_QuestTargetInfo>().Any())
-            {
-                var infoWindows = Find.WindowStack.Windows
-                    .OfType<Window_QuestTargetInfo>()
-                    .ToList();
-                foreach (var window in infoWindows)
-                    Find.WindowStack.TryRemove(window);
-            }
+            if(!Find.WindowStack.Windows.OfType<Window_QuestTargetInfo>().Any())
+                return;
+
+            var infoWindows = Find.WindowStack.Windows
+                .OfType<Window_QuestTargetInfo>()
+                .ToList();
+
+            foreach(Window_QuestTargetInfo window in infoWindows)
+                Find.WindowStack.TryRemove(window);
         }
-        private static bool IsValid(GlobalTargetInfo target) =>
-            target.IsValid && target.IsWorldTarget && target.Tile >= 0 && target.Tile < Find.WorldGrid.TilesCount && target.Label != "Location".Translate();
+
+        private static bool TryCreateRequest(
+            GlobalTargetInfo target,
+            out WorldTargetInfoRequest request)
+        {
+            request = null;
+
+            if(!IsValid(target))
+                return false;
+
+            PlanetTile originTile = Find.CurrentMap?.Tile ?? PlanetTile.Invalid;
+            if(!originTile.Valid)
+                return false;
+
+            WorldObject targetObject = target.HasWorldObject ? target.WorldObject : null;
+
+            request = new WorldTargetInfoRequest(
+                originTile,
+                target.Tile,
+                target.Label,
+                targetObject,
+                WorldTargetInfoSource.Quest);
+
+            return true;
+        }
+
+        private static bool IsValid(GlobalTargetInfo target)
+        {
+            return target.IsValid
+                && target.IsWorldTarget
+                && target.Tile.Valid
+                && target.Label != "Location".Translate();
+        }
     }
 }

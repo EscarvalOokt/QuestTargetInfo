@@ -1,14 +1,26 @@
-﻿using Verse;
+using System;
+using System.Reflection;
+using HarmonyLib;
+using Verse;
 
 namespace QuestTargetInfo
 {
-    internal class QuestTargetInfoMod : Mod
+    public class QuestTargetInfoMod : Mod
     {
         public QuestTargetInfoMod(ModContentPack content) : base(content)
         {
-            var harmony = new HarmonyLib.Harmony("questtargetinfo.patch");
-            harmony.PatchAll();
-            Log.Message("[QuestTargetInfo] Initialized");
+            try
+            {
+                var harmony = new Harmony("escarval.questtargetinfo");
+                harmony.PatchAll(Assembly.GetExecutingAssembly());
+
+                Log.Message("[QuestTargetInfo] Initialized");
+            }
+            catch(Exception ex)
+            {
+                Log.Error("[QuestTargetInfo] Failed to initialize:\n" + ex);
+                throw;
+            }
         }
     }
 }
