@@ -36,12 +36,12 @@
     <QuestTargetInfo.NotEnoughFuel>Недостатньо пального.</QuestTargetInfo.NotEnoughFuel>
     <QuestTargetInfo.NotEnoughFuelInGravshipTanks>Недостатньо пального в баках гравкорабля.</QuestTargetInfo.NotEnoughFuelInGravshipTanks>
     <QuestTargetInfo.OpenWorldTargetInfoTooltip>Показати інформацію про шлях</QuestTargetInfo.OpenWorldTargetInfoTooltip>
-    <QuestTargetInfo.OutboundFuel>Пальне туди</QuestTargetInfo.OutboundFuel>
+    <QuestTargetInfo.OutboundFuel>Потрібне пальне туди</QuestTargetInfo.OutboundFuel>
     <QuestTargetInfo.Range>Дальність</QuestTargetInfo.Range>
     <QuestTargetInfo.RangeValue>{0} / {1} плиток</QuestTargetInfo.RangeValue>
     <QuestTargetInfo.Reason>Причина: {0}</QuestTargetInfo.Reason>
     <QuestTargetInfo.RequiresSignalJammer>Потрібен глушник сигналу.</QuestTargetInfo.RequiresSignalJammer>
-    <QuestTargetInfo.ReturnFuel>Пальне назад</QuestTargetInfo.ReturnFuel>
+    <QuestTargetInfo.ReturnFuel>Потрібне пальне назад</QuestTargetInfo.ReturnFuel>
     <QuestTargetInfo.Route>Маршрут</QuestTargetInfo.Route>
     <QuestTargetInfo.RouteUnavailable>Маршрут недоступний.</QuestTargetInfo.RouteUnavailable>
     <QuestTargetInfo.SameTile>Вибрана ціль знаходиться на поточній мапі.</QuestTargetInfo.SameTile>
@@ -57,14 +57,19 @@
     <QuestTargetInfo.StatusUnavailable>Недоступно</QuestTargetInfo.StatusUnavailable>
     <QuestTargetInfo.TabLabel>Шлях</QuestTargetInfo.TabLabel>
     <QuestTargetInfo.TilesValue>{0} плиток</QuestTargetInfo.TilesValue>
-    <QuestTargetInfo.TotalFuel>Пальне разом</QuestTargetInfo.TotalFuel>
+    <QuestTargetInfo.TotalFuel>Потрібне пальне разом</QuestTargetInfo.TotalFuel>
     <QuestTargetInfo.TransportPod>Транспортна капсула</QuestTargetInfo.TransportPod>
 
-    <QuestTargetInfo.SettingsCategory>Quest Target Info</QuestTargetInfo.SettingsCategory>
-    <QuestTargetInfo.SettingShowQuestTravelWindow>Показувати вікно шляху для квестів</QuestTargetInfo.SettingShowQuestTravelWindow>
-    <QuestTargetInfo.SettingShowWorldInspectTravelTab>Показувати вкладку шляху в панелі світу</QuestTargetInfo.SettingShowWorldInspectTravelTab>
+    <QuestTargetInfo.SettingCompactMode>Компактний режим</QuestTargetInfo.SettingCompactMode>
     <QuestTargetInfo.SettingShowAncientPodCompatibilityLine>Показувати рядок сумісності стародавньої
         капсули</QuestTargetInfo.SettingShowAncientPodCompatibilityLine>
     <QuestTargetInfo.SettingShowFuelAdjustedDistance>Показувати відстань з урахуванням шару</QuestTargetInfo.SettingShowFuelAdjustedDistance>
+    <QuestTargetInfo.SettingShowGravship>Показувати гравкорабель</QuestTargetInfo.SettingShowGravship>
+    <QuestTargetInfo.SettingShowQuestTravelWindow>Показувати вікно шляху для квестів</QuestTargetInfo.SettingShowQuestTravelWindow>
+    <QuestTargetInfo.SettingShowShuttle>Показувати шатл</QuestTargetInfo.SettingShowShuttle>
+    <QuestTargetInfo.SettingShowTransportPod>Показувати транспортну капсулу</QuestTargetInfo.SettingShowTransportPod>
     <QuestTargetInfo.SettingShowUnavailableTransports>Показувати недоступний транспорт</QuestTargetInfo.SettingShowUnavailableTransports>
+    <QuestTargetInfo.SettingShowWorldInspectTravelTab>Показувати вкладку шляху в панелі світу</QuestTargetInfo.SettingShowWorldInspectTravelTab>
+    <QuestTargetInfo.SettingTransportVisibility>Відображення транспорту</QuestTargetInfo.SettingTransportVisibility>
+    <QuestTargetInfo.SettingsCategory>Quest Target Info</QuestTargetInfo.SettingsCategory>
 </LanguageData>

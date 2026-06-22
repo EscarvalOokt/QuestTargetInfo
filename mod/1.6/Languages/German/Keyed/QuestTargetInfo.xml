@@ -36,12 +36,12 @@
     <QuestTargetInfo.NotEnoughFuel>Nicht genug Treibstoff.</QuestTargetInfo.NotEnoughFuel>
     <QuestTargetInfo.NotEnoughFuelInGravshipTanks>Nicht genug Treibstoff in den Gravschiff-Tanks.</QuestTargetInfo.NotEnoughFuelInGravshipTanks>
     <QuestTargetInfo.OpenWorldTargetInfoTooltip>Reiseinfo anzeigen</QuestTargetInfo.OpenWorldTargetInfoTooltip>
-    <QuestTargetInfo.OutboundFuel>Treibstoff hin</QuestTargetInfo.OutboundFuel>
+    <QuestTargetInfo.OutboundFuel>Treibstoff hin benötigt</QuestTargetInfo.OutboundFuel>
     <QuestTargetInfo.Range>Reichweite</QuestTargetInfo.Range>
     <QuestTargetInfo.RangeValue>{0} / {1} Felder</QuestTargetInfo.RangeValue>
     <QuestTargetInfo.Reason>Grund: {0}</QuestTargetInfo.Reason>
     <QuestTargetInfo.RequiresSignalJammer>Signalstörer erforderlich.</QuestTargetInfo.RequiresSignalJammer>
-    <QuestTargetInfo.ReturnFuel>Treibstoff zurück</QuestTargetInfo.ReturnFuel>
+    <QuestTargetInfo.ReturnFuel>Treibstoff zurück benötigt</QuestTargetInfo.ReturnFuel>
     <QuestTargetInfo.Route>Route</QuestTargetInfo.Route>
     <QuestTargetInfo.RouteUnavailable>Route nicht verfügbar.</QuestTargetInfo.RouteUnavailable>
     <QuestTargetInfo.SameTile>Das ausgewählte Ziel befindet sich auf der aktuellen Karte.</QuestTargetInfo.SameTile>
@@ -57,14 +57,19 @@
     <QuestTargetInfo.StatusUnavailable>Nicht verfügbar</QuestTargetInfo.StatusUnavailable>
     <QuestTargetInfo.TabLabel>Reise</QuestTargetInfo.TabLabel>
     <QuestTargetInfo.TilesValue>{0} Felder</QuestTargetInfo.TilesValue>
-    <QuestTargetInfo.TotalFuel>Treibstoff gesamt</QuestTargetInfo.TotalFuel>
+    <QuestTargetInfo.TotalFuel>Treibstoff gesamt benötigt</QuestTargetInfo.TotalFuel>
     <QuestTargetInfo.TransportPod>Transportkapsel</QuestTargetInfo.TransportPod>
 
-    <QuestTargetInfo.SettingsCategory>Quest Target Info</QuestTargetInfo.SettingsCategory>
-    <QuestTargetInfo.SettingShowQuestTravelWindow>Quest-Reiseinfofenster anzeigen</QuestTargetInfo.SettingShowQuestTravelWindow>
-    <QuestTargetInfo.SettingShowWorldInspectTravelTab>Reise-Reiter im Welt-Inspektorfenster anzeigen</QuestTargetInfo.SettingShowWorldInspectTravelTab>
+    <QuestTargetInfo.SettingCompactMode>Kompakter Modus</QuestTargetInfo.SettingCompactMode>
     <QuestTargetInfo.SettingShowAncientPodCompatibilityLine>Kompatibilitätszeile für antike Kapsel
         anzeigen</QuestTargetInfo.SettingShowAncientPodCompatibilityLine>
     <QuestTargetInfo.SettingShowFuelAdjustedDistance>Schichtangepasste Entfernung anzeigen</QuestTargetInfo.SettingShowFuelAdjustedDistance>
+    <QuestTargetInfo.SettingShowGravship>Gravschiff anzeigen</QuestTargetInfo.SettingShowGravship>
+    <QuestTargetInfo.SettingShowQuestTravelWindow>Quest-Reiseinfofenster anzeigen</QuestTargetInfo.SettingShowQuestTravelWindow>
+    <QuestTargetInfo.SettingShowShuttle>Raumfähre anzeigen</QuestTargetInfo.SettingShowShuttle>
+    <QuestTargetInfo.SettingShowTransportPod>Transportkapsel anzeigen</QuestTargetInfo.SettingShowTransportPod>
     <QuestTargetInfo.SettingShowUnavailableTransports>Nicht verfügbare Transporte anzeigen</QuestTargetInfo.SettingShowUnavailableTransports>
+    <QuestTargetInfo.SettingShowWorldInspectTravelTab>Reise-Reiter im Welt-Inspektorfenster anzeigen</QuestTargetInfo.SettingShowWorldInspectTravelTab>
+    <QuestTargetInfo.SettingTransportVisibility>Transportanzeige</QuestTargetInfo.SettingTransportVisibility>
+    <QuestTargetInfo.SettingsCategory>Quest Target Info</QuestTargetInfo.SettingsCategory>
 </LanguageData>

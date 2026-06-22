@@ -35,12 +35,12 @@
     <QuestTargetInfo.NotEnoughFuel>Not enough fuel.</QuestTargetInfo.NotEnoughFuel>
     <QuestTargetInfo.NotEnoughFuelInGravshipTanks>Not enough fuel in gravship tanks.</QuestTargetInfo.NotEnoughFuelInGravshipTanks>
     <QuestTargetInfo.OpenWorldTargetInfoTooltip>Show travel info</QuestTargetInfo.OpenWorldTargetInfoTooltip>
-    <QuestTargetInfo.OutboundFuel>Outbound fuel</QuestTargetInfo.OutboundFuel>
+    <QuestTargetInfo.OutboundFuel>Outbound fuel required</QuestTargetInfo.OutboundFuel>
     <QuestTargetInfo.Range>Range</QuestTargetInfo.Range>
     <QuestTargetInfo.RangeValue>{0} / {1} tiles</QuestTargetInfo.RangeValue>
     <QuestTargetInfo.Reason>Reason: {0}</QuestTargetInfo.Reason>
     <QuestTargetInfo.RequiresSignalJammer>Requires signal jammer.</QuestTargetInfo.RequiresSignalJammer>
-    <QuestTargetInfo.ReturnFuel>Return fuel</QuestTargetInfo.ReturnFuel>
+    <QuestTargetInfo.ReturnFuel>Return fuel required</QuestTargetInfo.ReturnFuel>
     <QuestTargetInfo.Route>Route</QuestTargetInfo.Route>
     <QuestTargetInfo.RouteUnavailable>Route unavailable.</QuestTargetInfo.RouteUnavailable>
     <QuestTargetInfo.SameTile>Selected target is the current map.</QuestTargetInfo.SameTile>
@@ -56,13 +56,18 @@
     <QuestTargetInfo.StatusUnavailable>Unavailable</QuestTargetInfo.StatusUnavailable>
     <QuestTargetInfo.TabLabel>Travel</QuestTargetInfo.TabLabel>
     <QuestTargetInfo.TilesValue>{0} tiles</QuestTargetInfo.TilesValue>
-    <QuestTargetInfo.TotalFuel>Total fuel</QuestTargetInfo.TotalFuel>
+    <QuestTargetInfo.TotalFuel>Total fuel required</QuestTargetInfo.TotalFuel>
     <QuestTargetInfo.TransportPod>Transport pod</QuestTargetInfo.TransportPod>
 
-    <QuestTargetInfo.SettingsCategory>Quest Target Info</QuestTargetInfo.SettingsCategory>
-    <QuestTargetInfo.SettingShowQuestTravelWindow>Show quest travel window</QuestTargetInfo.SettingShowQuestTravelWindow>
-    <QuestTargetInfo.SettingShowWorldInspectTravelTab>Show world inspect Travel tab</QuestTargetInfo.SettingShowWorldInspectTravelTab>
+    <QuestTargetInfo.SettingCompactMode>Compact mode</QuestTargetInfo.SettingCompactMode>
     <QuestTargetInfo.SettingShowAncientPodCompatibilityLine>Show ancient pod compatibility line</QuestTargetInfo.SettingShowAncientPodCompatibilityLine>
     <QuestTargetInfo.SettingShowFuelAdjustedDistance>Show layer-adjusted distance</QuestTargetInfo.SettingShowFuelAdjustedDistance>
+    <QuestTargetInfo.SettingShowGravship>Show gravship</QuestTargetInfo.SettingShowGravship>
+    <QuestTargetInfo.SettingShowQuestTravelWindow>Show quest travel window</QuestTargetInfo.SettingShowQuestTravelWindow>
+    <QuestTargetInfo.SettingShowShuttle>Show shuttle</QuestTargetInfo.SettingShowShuttle>
+    <QuestTargetInfo.SettingShowTransportPod>Show transport pod</QuestTargetInfo.SettingShowTransportPod>
     <QuestTargetInfo.SettingShowUnavailableTransports>Show unavailable transports</QuestTargetInfo.SettingShowUnavailableTransports>
+    <QuestTargetInfo.SettingShowWorldInspectTravelTab>Show world inspect Travel tab</QuestTargetInfo.SettingShowWorldInspectTravelTab>
+    <QuestTargetInfo.SettingTransportVisibility>Transport visibility</QuestTargetInfo.SettingTransportVisibility>
+    <QuestTargetInfo.SettingsCategory>Quest Target Info</QuestTargetInfo.SettingsCategory>
 </LanguageData>

@@ -45,6 +45,9 @@ namespace QuestTargetInfo
             if(info.Status == WorldTargetTransportStatus.NoDlc)
                 return false;
 
+            if(!QuestTargetInfoMod.Settings.IsTransportVisible(info.Kind))
+                return false;
+
             if(!QuestTargetInfoMod.Settings.ShowUnavailableTransports
                 && !info.IsAvailable)
             {
@@ -58,14 +61,17 @@ namespace QuestTargetInfo
             WorldTargetInfoRequest request,
             WorldTargetRouteInfo route)
         {
-            var lines = new List<WorldTargetInfoLineModel>
-            {
-                CreateLabelValueLine(
-                "QuestTargetInfo.From".Translate().ToString(),
-                "QuestTargetInfo.CurrentMap".Translate().ToString())
-            };
+            var lines = new List<WorldTargetInfoLineModel>();
 
-            AddRouteLayerContextLines(request, lines);
+            if(!QuestTargetInfoMod.Settings.CompactMode)
+            {
+                lines.Add(CreateLabelValueLine(
+                    "QuestTargetInfo.From".Translate().ToString(),
+                    "QuestTargetInfo.CurrentMap".Translate().ToString()));
+
+                AddRouteLayerContextLines(request, lines);
+            }
+
             AddRouteDistanceLine(route, lines);
             AddLayerAdjustedDistanceLine(route, lines);
             AddRouteStatusLine(route, lines);
@@ -132,7 +138,7 @@ namespace QuestTargetInfo
             WorldTargetRouteInfo route,
             List<WorldTargetInfoLineModel> lines)
         {
-            if(!QuestTargetInfoMod.Settings.ShowFuelAdjustedDistance)
+            if(!QuestTargetInfoMod.Settings.ShouldShowLayerAdjustedDistance)
                 return;
 
             if(!route.HasDistance)
@@ -277,6 +283,12 @@ namespace QuestTargetInfo
             WorldTargetTransportInfo info,
             List<WorldTargetInfoLineModel> lines)
         {
+            if(QuestTargetInfoMod.Settings.CompactMode)
+            {
+                AddCompactFuelLine(info, lines);
+                return;
+            }
+
             if(info.Kind == WorldTargetTransportKind.Shuttle)
             {
                 AddShuttleFuelLines(info, lines);
@@ -301,6 +313,12 @@ namespace QuestTargetInfo
             WorldTargetTransportInfo info,
             List<WorldTargetInfoLineModel> lines)
         {
+            if(QuestTargetInfoMod.Settings.CompactMode)
+            {
+                AddCompactFuelLine(info, lines);
+                return;
+            }
+
             if(HasShuttleFuelDetails(info))
             {
                 AddShuttleFuelLines(info, lines);
@@ -315,6 +333,32 @@ namespace QuestTargetInfo
             string detail = GetStatusDetailsLine(info);
             if(!detail.NullOrEmpty())
                 lines.Add(new WorldTargetInfoLineModel(detail));
+        }
+
+        private static void AddCompactFuelLine(
+            WorldTargetTransportInfo info,
+            List<WorldTargetInfoLineModel> lines)
+        {
+            if(info.Kind == WorldTargetTransportKind.Shuttle
+                && info.FuelTotalCost >= 0f)
+            {
+                lines.Add(CreateLabelValueLine(
+                    "QuestTargetInfo.TotalFuel".Translate().ToString(),
+                    ((int)info.FuelTotalCost).ToString()));
+
+                return;
+            }
+
+            if(info.FuelCost < 0f)
+                return;
+
+            string label = info.IsAvailable
+                ? GetPrimaryFuelLabel(info.Kind)
+                : "QuestTargetInfo.EstimatedFuel".Translate().ToString();
+
+            lines.Add(CreateLabelValueLine(
+                label,
+                ((int)info.FuelCost).ToString()));
         }
 
         private static bool HasShuttleFuelDetails(
@@ -388,6 +432,9 @@ namespace QuestTargetInfo
             WorldTargetTransportInfo info,
             List<WorldTargetInfoLineModel> lines)
         {
+            if(!QuestTargetInfoMod.Settings.ShouldShowTransportDetails)
+                return;
+
             if(info.Kind != WorldTargetTransportKind.Shuttle)
                 return;
 
@@ -421,7 +468,7 @@ namespace QuestTargetInfo
             WorldTargetTransportInfo info,
             List<WorldTargetInfoLineModel> lines)
         {
-            if(!QuestTargetInfoMod.Settings.ShowAncientPodCompatibilityLine)
+            if(!QuestTargetInfoMod.Settings.ShouldShowAncientPodCompatibilityLine)
                 return;
 
             int ancientPodMaxDistance =

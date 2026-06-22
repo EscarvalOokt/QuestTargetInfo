@@ -36,7 +36,7 @@ namespace QuestTargetInfo
             DrawCheckbox(
                 listing,
                 settings,
-                ref settings.ShowFuelAdjustedDistance,
+                ref settings.ShowLayerAdjustedDistance,
                 "QuestTargetInfo.SettingShowFuelAdjustedDistance");
 
             DrawCheckbox(
@@ -44,6 +44,35 @@ namespace QuestTargetInfo
                 settings,
                 ref settings.ShowUnavailableTransports,
                 "QuestTargetInfo.SettingShowUnavailableTransports");
+
+            DrawCheckbox(
+                listing,
+                settings,
+                ref settings.CompactMode,
+                "QuestTargetInfo.SettingCompactMode");
+
+            listing.GapLine();
+            listing.Label(
+                "QuestTargetInfo.SettingTransportVisibility".Translate().ToString());
+            listing.Gap();
+
+            DrawCheckbox(
+                listing,
+                settings,
+                ref settings.ShowTransportPod,
+                "QuestTargetInfo.SettingShowTransportPod");
+
+            DrawCheckbox(
+                listing,
+                settings,
+                ref settings.ShowShuttle,
+                "QuestTargetInfo.SettingShowShuttle");
+
+            DrawCheckbox(
+                listing,
+                settings,
+                ref settings.ShowGravship,
+                "QuestTargetInfo.SettingShowGravship");
 
             listing.End();
         }
