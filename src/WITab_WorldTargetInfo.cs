@@ -11,12 +11,20 @@ namespace QuestTargetInfo
         private Vector2 _scrollPosition;
         private float _lastDrawnHeight;
 
+        private bool _hasLastRequestKey;
+        private WorldTargetInfoRequestKey _lastRequestKey;
+
         public override bool IsVisible
         {
             get
             {
-                return WorldTargetInfoSelectionUtility.TryCreateRequest(
+                bool visible = WorldTargetInfoSelectionUtility.TryCreateRequest(
                     out WorldTargetInfoRequest _);
+
+                if(!visible)
+                    Notify_RequestUnavailable();
+
+                return visible;
             }
         }
 
@@ -26,13 +34,22 @@ namespace QuestTargetInfo
             labelKey = "QuestTargetInfo.TabLabel";
         }
 
+        internal void Notify_RequestUnavailable()
+        {
+            _hasLastRequestKey = false;
+            ResetScrollState();
+        }
+
         protected override void FillTab()
         {
             if(!WorldTargetInfoSelectionUtility.TryCreateRequest(
                 out WorldTargetInfoRequest request))
             {
+                Notify_RequestUnavailable();
                 return;
             }
+
+            ResetScrollIfTargetChanged(request);
 
             WorldTargetInfoModel model = WorldTargetInfoModelBuilder.Build(request);
 
@@ -53,6 +70,32 @@ namespace QuestTargetInfo
                 WorldTargetInfoDrawOptions.ForWorldInspectTab());
 
             Widgets.EndScrollView();
+        }
+
+        private void ResetScrollIfTargetChanged(
+            WorldTargetInfoRequest request)
+        {
+            var currentKey = WorldTargetInfoRequestKey.From(request);
+
+            if(!_hasLastRequestKey)
+            {
+                _lastRequestKey = currentKey;
+                _hasLastRequestKey = true;
+                ResetScrollState();
+                return;
+            }
+
+            if(currentKey == _lastRequestKey)
+                return;
+
+            _lastRequestKey = currentKey;
+            ResetScrollState();
+        }
+
+        private void ResetScrollState()
+        {
+            _scrollPosition = Vector2.zero;
+            _lastDrawnHeight = 0f;
         }
     }
 }

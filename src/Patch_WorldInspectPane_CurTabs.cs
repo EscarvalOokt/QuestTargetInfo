@@ -17,6 +17,7 @@ namespace QuestTargetInfo
             if(!WorldTargetInfoSelectionUtility.TryCreateRequest(
                 out WorldTargetInfoRequest _))
             {
+                TargetInfoTab.Notify_RequestUnavailable();
                 return;
             }
 

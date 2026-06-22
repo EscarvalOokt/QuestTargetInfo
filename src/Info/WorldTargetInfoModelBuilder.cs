@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using RimWorld.Planet;
 using Verse;
 
 namespace QuestTargetInfo
@@ -11,14 +12,10 @@ namespace QuestTargetInfo
 
             WorldTargetRouteInfo route = WorldTargetRouteCalculator.Calculate(request);
 
-            if(route.Status == WorldTargetRouteStatus.SameTile)
-            {
-                sections.Add(BuildSameTileRouteSection());
-                return new WorldTargetInfoModel(GetTitle(request), sections);
-            }
+            sections.Add(BuildRouteSection(request, route));
 
-            if(route.HasDistance)
-                sections.Add(BuildDistanceRouteSection(route.Distance));
+            if(route.Status == WorldTargetRouteStatus.SameTile)
+                return new WorldTargetInfoModel(GetTitle(request), sections);
 
             sections.Add(BuildTransportSection(
                 WorldTargetFlyingTransportCalculator.CalculateTransportPod(request)));
@@ -38,40 +35,153 @@ namespace QuestTargetInfo
             return new WorldTargetInfoModel(GetTitle(request), sections);
         }
 
-        private static WorldTargetInfoSectionModel BuildSameTileRouteSection()
+        private static WorldTargetInfoSectionModel BuildRouteSection(
+            WorldTargetInfoRequest request,
+            WorldTargetRouteInfo route)
         {
             var lines = new List<WorldTargetInfoLineModel>
             {
-                new WorldTargetInfoLineModel(
-                    "QuestTargetInfo.EstimatedDistanceTiles".Translate(0).ToString()),
-
-                new WorldTargetInfoLineModel(
-                    "QuestTargetInfo.SameTile".Translate().ToString())
+                CreateLabelValueLine(
+                "QuestTargetInfo.From".Translate().ToString(),
+                "QuestTargetInfo.CurrentMap".Translate().ToString())
             };
+
+            AddRouteLayerContextLines(request, lines);
+            AddRouteDistanceLine(route, lines);
+            AddRouteStatusLine(route, lines);
 
             return new WorldTargetInfoSectionModel(
                 WorldTargetInfoSectionKind.Route,
                 title: null,
                 statusText: null,
-                WorldTargetInfoStatusKind.Available,
+                GetRouteStatusKind(route.Status),
                 lines);
         }
 
-        private static WorldTargetInfoSectionModel BuildDistanceRouteSection(
-            WorldTargetDistanceInfo distance)
+        private static void AddRouteLayerContextLines(
+            WorldTargetInfoRequest request,
+            List<WorldTargetInfoLineModel> lines)
         {
-            var lines = new List<WorldTargetInfoLineModel>
-            {
-                new WorldTargetInfoLineModel(
-                    "QuestTargetInfo.EstimatedDistanceTiles".Translate(distance.DistanceTo).ToString())
-            };
+            if(request == null || !request.OriginTile.Valid || !request.TargetTile.Valid)
+                return;
 
-            return new WorldTargetInfoSectionModel(
-                WorldTargetInfoSectionKind.Route,
-                title: null,
-                statusText: null,
-                WorldTargetInfoStatusKind.Available,
-                lines);
+            PlanetLayer originLayer = request.OriginTile.Layer;
+            PlanetLayer targetLayer = request.TargetTile.Layer;
+
+            string originLayerLabel = GetLayerLabel(originLayer);
+            string targetLayerLabel = GetLayerLabel(targetLayer);
+
+            if(originLayer == targetLayer)
+            {
+                lines.Add(CreateLabelValueLine(
+                    "QuestTargetInfo.Layer".Translate().ToString(),
+                    originLayerLabel));
+
+                return;
+            }
+
+            lines.Add(CreateLabelValueLine(
+                "QuestTargetInfo.Route".Translate().ToString(),
+                "QuestTargetInfo.LayerRoute".Translate(
+                    originLayerLabel,
+                    targetLayerLabel).ToString()));
+        }
+
+        private static void AddRouteDistanceLine(
+            WorldTargetRouteInfo route,
+            List<WorldTargetInfoLineModel> lines)
+        {
+            if(route.Status == WorldTargetRouteStatus.SameTile)
+            {
+                lines.Add(CreateLabelValueLine(
+                    "QuestTargetInfo.Distance".Translate().ToString(),
+                    "QuestTargetInfo.TilesValue".Translate(0).ToString()));
+
+                return;
+            }
+
+            if(!route.HasDistance)
+                return;
+
+            lines.Add(CreateLabelValueLine(
+                "QuestTargetInfo.Distance".Translate().ToString(),
+                "QuestTargetInfo.TilesValue".Translate(route.Distance.DistanceTo).ToString()));
+        }
+
+        private static void AddRouteStatusLine(
+            WorldTargetRouteInfo route,
+            List<WorldTargetInfoLineModel> lines)
+        {
+            if(route.Status == WorldTargetRouteStatus.SameTile)
+            {
+                lines.Add(new WorldTargetInfoLineModel(
+                    "QuestTargetInfo.SameTile".Translate().ToString()));
+
+                return;
+            }
+
+            string statusLine = GetRouteStatusLine(route.Status);
+            if(!statusLine.NullOrEmpty())
+                lines.Add(new WorldTargetInfoLineModel(statusLine));
+        }
+
+        private static WorldTargetInfoLineModel CreateLabelValueLine(
+            string label,
+            string value)
+        {
+            return new WorldTargetInfoLineModel(
+                text: null,
+                label: label,
+                value: value);
+        }
+
+        private static string GetLayerLabel(PlanetLayer layer)
+        {
+            if(layer?.Def == null)
+                return "QuestTargetInfo.InvalidTarget".Translate().ToString();
+
+            return layer.Def.LabelCap.ToString();
+        }
+
+        private static string GetRouteStatusLine(WorldTargetRouteStatus status)
+        {
+            switch(status)
+            {
+                case WorldTargetRouteStatus.InvalidOrigin:
+                    return "QuestTargetInfo.InvalidOrigin".Translate().ToString();
+
+                case WorldTargetRouteStatus.InvalidTarget:
+                    return "QuestTargetInfo.InvalidTarget".Translate().ToString();
+
+                case WorldTargetRouteStatus.NoLayerPath:
+                    return "QuestTargetInfo.NoLayerPath".Translate().ToString();
+
+                case WorldTargetRouteStatus.NoRoute:
+                    return "QuestTargetInfo.RouteUnavailable".Translate().ToString();
+
+                default:
+                    return null;
+            }
+        }
+
+        private static WorldTargetInfoStatusKind GetRouteStatusKind(
+            WorldTargetRouteStatus status)
+        {
+            switch(status)
+            {
+                case WorldTargetRouteStatus.Available:
+                case WorldTargetRouteStatus.SameTile:
+                    return WorldTargetInfoStatusKind.Available;
+
+                case WorldTargetRouteStatus.InvalidOrigin:
+                case WorldTargetRouteStatus.InvalidTarget:
+                case WorldTargetRouteStatus.NoLayerPath:
+                case WorldTargetRouteStatus.NoRoute:
+                    return WorldTargetInfoStatusKind.Error;
+
+                default:
+                    return WorldTargetInfoStatusKind.None;
+            }
         }
 
         private static WorldTargetInfoSectionModel BuildTransportSection(
@@ -98,17 +208,20 @@ namespace QuestTargetInfo
             WorldTargetTransportInfo info,
             List<WorldTargetInfoLineModel> lines)
         {
-            lines.Add(new WorldTargetInfoLineModel(
-                "QuestTargetInfo.FuelCost".Translate((int)info.FuelCost).ToString()));
+            lines.Add(CreateLabelValueLine(
+                "QuestTargetInfo.Fuel".Translate().ToString(),
+                ((int)info.FuelCost).ToString()));
 
             if(info.Kind != WorldTargetTransportKind.Shuttle)
                 return;
 
-            lines.Add(new WorldTargetInfoLineModel(
-                "QuestTargetInfo.FuelReturnCost".Translate((int)info.FuelReturnCost).ToString()));
+            lines.Add(CreateLabelValueLine(
+                "QuestTargetInfo.ReturnFuel".Translate().ToString(),
+                ((int)info.FuelReturnCost).ToString()));
 
-            lines.Add(new WorldTargetInfoLineModel(
-                "QuestTargetInfo.FuelTotalCost".Translate((int)info.FuelTotalCost).ToString()));
+            lines.Add(CreateLabelValueLine(
+                "QuestTargetInfo.TotalFuel".Translate().ToString(),
+                ((int)info.FuelTotalCost).ToString()));
         }
 
         private static void AddUnavailableTransportLines(
@@ -117,8 +230,9 @@ namespace QuestTargetInfo
         {
             if(info.FuelCost >= 0f)
             {
-                lines.Add(new WorldTargetInfoLineModel(
-                    "QuestTargetInfo.FuelEstimate".Translate((int)info.FuelCost).ToString()));
+                lines.Add(CreateLabelValueLine(
+                    "QuestTargetInfo.EstimatedFuel".Translate().ToString(),
+                    ((int)info.FuelCost).ToString()));
             }
 
             string detail = GetStatusDetailsLine(info);
@@ -136,17 +250,10 @@ namespace QuestTargetInfo
             if(info.DistanceTo < 0)
                 return;
 
-            if(info.DistanceTo > WorldTargetFlyingTransportCalculator.AncientTransportPodMaxLaunchDistance)
-            {
-                lines.Add(new WorldTargetInfoLineModel(
-                    "QuestTargetInfo.AncientTransportPodBeyondMaximumRange".Translate(
-                        WorldTargetFlyingTransportCalculator.AncientTransportPodMaxLaunchDistance).ToString()));
-
-                return;
-            }
-
-            lines.Add(new WorldTargetInfoLineModel(
-                "QuestTargetInfo.AncientTransportPodInRange".Translate(
+            lines.Add(CreateLabelValueLine(
+                "QuestTargetInfo.AncientTransportPodShort".Translate().ToString(),
+                "QuestTargetInfo.RangeValue".Translate(
+                    info.DistanceTo,
                     WorldTargetFlyingTransportCalculator.AncientTransportPodMaxLaunchDistance).ToString()));
         }
 

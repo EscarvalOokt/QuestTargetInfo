@@ -63,7 +63,7 @@ namespace QuestTargetInfo
             if(string.IsNullOrEmpty(section.StatusText))
                 return section.Title;
 
-            return section.Title + " " + section.StatusText;
+            return section.Title + ": " + section.StatusText;
         }
     }
 }

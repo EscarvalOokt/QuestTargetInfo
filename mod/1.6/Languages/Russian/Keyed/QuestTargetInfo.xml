@@ -1,45 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
+    <QuestTargetInfo.AncientTransportPodBeyondMaximumRange>Древняя транспортная капсула: цель за
+        пределами дальности, максимум {0} клеток.</QuestTargetInfo.AncientTransportPodBeyondMaximumRange>
+    <QuestTargetInfo.AncientTransportPodInRange>Древняя транспортная капсула: в пределах дальности,
+        максимум {0} клеток.</QuestTargetInfo.AncientTransportPodInRange>
+    <QuestTargetInfo.AncientTransportPodShort>Древняя капсула</QuestTargetInfo.AncientTransportPodShort>
+    <QuestTargetInfo.BeyondMaximumRange>Цель за пределами максимальной дальности.</QuestTargetInfo.BeyondMaximumRange>
+    <QuestTargetInfo.CollapseTooltip>Свернуть</QuestTargetInfo.CollapseTooltip>
+    <QuestTargetInfo.CurrentMap>Текущая карта</QuestTargetInfo.CurrentMap>
+    <QuestTargetInfo.Distance>Дистанция</QuestTargetInfo.Distance>
     <QuestTargetInfo.EstimatedDistanceTiles>Примерная дистанция: {0} клеток</QuestTargetInfo.EstimatedDistanceTiles>
-    <QuestTargetInfo.Shuttle>Шаттл:</QuestTargetInfo.Shuttle>
+    <QuestTargetInfo.EstimatedFuel>Оценка</QuestTargetInfo.EstimatedFuel>
+    <QuestTargetInfo.ExpandTooltip>Развернуть</QuestTargetInfo.ExpandTooltip>
+    <QuestTargetInfo.From>Откуда</QuestTargetInfo.From>
+    <QuestTargetInfo.Fuel>Топливо</QuestTargetInfo.Fuel>
     <QuestTargetInfo.FuelCost>Расход топлива: {0}</QuestTargetInfo.FuelCost>
+    <QuestTargetInfo.FuelEstimate>Оценка расхода топлива: {0}</QuestTargetInfo.FuelEstimate>
     <QuestTargetInfo.FuelReturnCost>Топливо на обратный путь: {0}</QuestTargetInfo.FuelReturnCost>
     <QuestTargetInfo.FuelTotalCost>Общий расход топлива: {0}</QuestTargetInfo.FuelTotalCost>
-    <QuestTargetInfo.TransportPod>Транспортная капсула:</QuestTargetInfo.TransportPod>
-    <QuestTargetInfo.Gravship>Гравикорабль:</QuestTargetInfo.Gravship>
+    <QuestTargetInfo.Gravship>Гравикорабль</QuestTargetInfo.Gravship>
     <QuestTargetInfo.GravshipRouteUnavailable>Маршрут недоступен.</QuestTargetInfo.GravshipRouteUnavailable>
-    <QuestTargetInfo.NoGravship>Гравикорабль не найден.</QuestTargetInfo.NoGravship>
-    <QuestTargetInfo.Header>Информация о цели</QuestTargetInfo.Header>
-    <QuestTargetInfo.TabLabel>Цель</QuestTargetInfo.TabLabel>
-    <QuestTargetInfo.SameTile>Выбранная цель находится на текущей карте.</QuestTargetInfo.SameTile>
-    <QuestTargetInfo.OpenWorldTargetInfoTooltip>Показать информацию о цели</QuestTargetInfo.OpenWorldTargetInfoTooltip>
-    <QuestTargetInfo.CollapseTooltip>Свернуть</QuestTargetInfo.CollapseTooltip>
-    <QuestTargetInfo.ExpandTooltip>Развернуть</QuestTargetInfo.ExpandTooltip>
-    <QuestTargetInfo.RouteUnavailable>Маршрут недоступен.</QuestTargetInfo.RouteUnavailable>
-    <QuestTargetInfo.NoVehicle>Транспорт не найден.</QuestTargetInfo.NoVehicle>
+    <QuestTargetInfo.Header>Информация о пути</QuestTargetInfo.Header>
+    <QuestTargetInfo.InvalidLandingTarget>Недопустимая точка посадки.</QuestTargetInfo.InvalidLandingTarget>
     <QuestTargetInfo.InvalidOrigin>Некорректная точка отправления.</QuestTargetInfo.InvalidOrigin>
     <QuestTargetInfo.InvalidTarget>Некорректная цель.</QuestTargetInfo.InvalidTarget>
     <QuestTargetInfo.InvalidWorldObject>Этот объект мира не является допустимой целью для
         транспорта.</QuestTargetInfo.InvalidWorldObject>
-    <QuestTargetInfo.InvalidLandingTarget>Недопустимая точка посадки.</QuestTargetInfo.InvalidLandingTarget>
-    <QuestTargetInfo.RequiresSignalJammer>Требуется подавитель сигнала.</QuestTargetInfo.RequiresSignalJammer>
+    <QuestTargetInfo.Layer>Слой</QuestTargetInfo.Layer>
+    <QuestTargetInfo.LayerRoute>{0} → {1}</QuestTargetInfo.LayerRoute>
+    <QuestTargetInfo.NoGravship>Гравикорабль не найден.</QuestTargetInfo.NoGravship>
     <QuestTargetInfo.NoLayerPath>Нет маршрута между слоями планеты.</QuestTargetInfo.NoLayerPath>
-    <QuestTargetInfo.BeyondMaximumRange>Цель за пределами максимальной дальности.</QuestTargetInfo.BeyondMaximumRange>
-    <QuestTargetInfo.AncientTransportPodInRange>Древняя транспортная капсула: в пределах дальности,
-        максимум {0} клеток.</QuestTargetInfo.AncientTransportPodInRange>
-    <QuestTargetInfo.AncientTransportPodBeyondMaximumRange>Древняя транспортная капсула: цель за
-        пределами дальности, максимум {0} клеток.</QuestTargetInfo.AncientTransportPodBeyondMaximumRange>
     <QuestTargetInfo.NotEnoughFuel>Недостаточно топлива.</QuestTargetInfo.NotEnoughFuel>
     <QuestTargetInfo.NotEnoughFuelInGravshipTanks>Недостаточно топлива в баках гравикорабля.</QuestTargetInfo.NotEnoughFuelInGravshipTanks>
+    <QuestTargetInfo.NoVehicle>Транспорт не найден.</QuestTargetInfo.NoVehicle>
+    <QuestTargetInfo.OpenWorldTargetInfoTooltip>Показать информацию о пути</QuestTargetInfo.OpenWorldTargetInfoTooltip>
+    <QuestTargetInfo.RangeValue>{0} / {1} клеток</QuestTargetInfo.RangeValue>
+    <QuestTargetInfo.Reason>Причина: {0}</QuestTargetInfo.Reason>
+    <QuestTargetInfo.RequiresSignalJammer>Требуется подавитель сигнала.</QuestTargetInfo.RequiresSignalJammer>
+    <QuestTargetInfo.ReturnFuel>Обратно</QuestTargetInfo.ReturnFuel>
+    <QuestTargetInfo.Route>Маршрут</QuestTargetInfo.Route>
+    <QuestTargetInfo.RouteUnavailable>Маршрут недоступен.</QuestTargetInfo.RouteUnavailable>
+    <QuestTargetInfo.SameTile>Выбранная цель находится на текущей карте.</QuestTargetInfo.SameTile>
+    <QuestTargetInfo.Shuttle>Шаттл</QuestTargetInfo.Shuttle>
     <QuestTargetInfo.StatusAvailable>Доступно</QuestTargetInfo.StatusAvailable>
-    <QuestTargetInfo.StatusOutOfRange>Вне дальности</QuestTargetInfo.StatusOutOfRange>
     <QuestTargetInfo.StatusCannotLand>Посадка невозможна</QuestTargetInfo.StatusCannotLand>
-    <QuestTargetInfo.StatusUnavailable>Недоступно</QuestTargetInfo.StatusUnavailable>
-    <QuestTargetInfo.StatusNoVehicle>Нет транспорта</QuestTargetInfo.StatusNoVehicle>
+    <QuestTargetInfo.StatusInvalidTarget>Некорректная цель</QuestTargetInfo.StatusInvalidTarget>
     <QuestTargetInfo.StatusNoRoute>Нет маршрута</QuestTargetInfo.StatusNoRoute>
     <QuestTargetInfo.StatusNotEnoughFuel>Недостаточно топлива</QuestTargetInfo.StatusNotEnoughFuel>
+    <QuestTargetInfo.StatusNoVehicle>Нет транспорта</QuestTargetInfo.StatusNoVehicle>
+    <QuestTargetInfo.StatusOutOfRange>Вне дальности</QuestTargetInfo.StatusOutOfRange>
     <QuestTargetInfo.StatusRequiresSignalJammer>Требуется подавитель сигнала</QuestTargetInfo.StatusRequiresSignalJammer>
-    <QuestTargetInfo.StatusInvalidTarget>Некорректная цель</QuestTargetInfo.StatusInvalidTarget>
-    <QuestTargetInfo.FuelEstimate>Оценка расхода топлива: {0}</QuestTargetInfo.FuelEstimate>
-    <QuestTargetInfo.Reason>Причина: {0}</QuestTargetInfo.Reason>
+    <QuestTargetInfo.StatusUnavailable>Недоступно</QuestTargetInfo.StatusUnavailable>
+    <QuestTargetInfo.TabLabel>Путь</QuestTargetInfo.TabLabel>
+    <QuestTargetInfo.TilesValue>{0} клеток</QuestTargetInfo.TilesValue>
+    <QuestTargetInfo.TotalFuel>Всего</QuestTargetInfo.TotalFuel>
+    <QuestTargetInfo.TransportPod>Транспортная капсула</QuestTargetInfo.TransportPod>
 </LanguageData>

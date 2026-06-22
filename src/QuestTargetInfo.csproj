@@ -84,6 +84,7 @@
     <Compile Include="Info\WorldTargetInfoLineFormatter.cs" />
     <Compile Include="Info\WorldTargetInfoModelBuilder.cs" />
     <Compile Include="Info\WorldTargetInfoRequest.cs" />
+    <Compile Include="Info\WorldTargetInfoRequestKey.cs" />
     <Compile Include="Info\WorldTargetInfoSource.cs" />
     <Compile Include="Info\WorldTargetRouteCalculator.cs" />
     <Compile Include="Info\WorldTargetRouteInfo.cs" />
