@@ -15,4 +15,18 @@
     <QuestTargetInfo.OpenWorldTargetInfoTooltip>Show target info</QuestTargetInfo.OpenWorldTargetInfoTooltip>
     <QuestTargetInfo.CollapseTooltip>Collapse</QuestTargetInfo.CollapseTooltip>
     <QuestTargetInfo.ExpandTooltip>Expand</QuestTargetInfo.ExpandTooltip>
+    <QuestTargetInfo.RouteUnavailable>Route unavailable.</QuestTargetInfo.RouteUnavailable>
+    <QuestTargetInfo.NoVehicle>No vehicle found.</QuestTargetInfo.NoVehicle>
+    <QuestTargetInfo.InvalidOrigin>Invalid origin.</QuestTargetInfo.InvalidOrigin>
+    <QuestTargetInfo.InvalidTarget>Invalid target.</QuestTargetInfo.InvalidTarget>
+    <QuestTargetInfo.InvalidWorldObject>This world object is not a valid transport target.</QuestTargetInfo.InvalidWorldObject>
+    <QuestTargetInfo.InvalidLandingTarget>Invalid landing target.</QuestTargetInfo.InvalidLandingTarget>
+    <QuestTargetInfo.RequiresSignalJammer>Requires signal jammer.</QuestTargetInfo.RequiresSignalJammer>
+    <QuestTargetInfo.NoLayerPath>No route between planet layers.</QuestTargetInfo.NoLayerPath>
+    <QuestTargetInfo.BeyondMaximumRange>Beyond maximum range.</QuestTargetInfo.BeyondMaximumRange>
+    <QuestTargetInfo.AncientTransportPodInRange>Ancient drop pod: in range, max {0} tiles.</QuestTargetInfo.AncientTransportPodInRange>
+    <QuestTargetInfo.AncientTransportPodBeyondMaximumRange>Ancient drop pod: beyond maximum range,
+        max {0} tiles.</QuestTargetInfo.AncientTransportPodBeyondMaximumRange>
+    <QuestTargetInfo.NotEnoughFuel>Not enough fuel.</QuestTargetInfo.NotEnoughFuel>
+    <QuestTargetInfo.NotEnoughFuelInGravshipTanks>Not enough fuel in gravship tanks.</QuestTargetInfo.NotEnoughFuelInGravshipTanks>
 </LanguageData>

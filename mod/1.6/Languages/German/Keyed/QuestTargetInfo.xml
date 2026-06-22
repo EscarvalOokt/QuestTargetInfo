@@ -15,4 +15,19 @@
     <QuestTargetInfo.OpenWorldTargetInfoTooltip>Zielinfo anzeigen</QuestTargetInfo.OpenWorldTargetInfoTooltip>
     <QuestTargetInfo.CollapseTooltip>Ausblenden</QuestTargetInfo.CollapseTooltip>
     <QuestTargetInfo.ExpandTooltip>Einblenden</QuestTargetInfo.ExpandTooltip>
+    <QuestTargetInfo.RouteUnavailable>Route nicht verfügbar.</QuestTargetInfo.RouteUnavailable>
+    <QuestTargetInfo.NoVehicle>Kein Fahrzeug gefunden.</QuestTargetInfo.NoVehicle>
+    <QuestTargetInfo.InvalidOrigin>Ungültiger Startpunkt.</QuestTargetInfo.InvalidOrigin>
+    <QuestTargetInfo.InvalidTarget>Ungültiges Ziel.</QuestTargetInfo.InvalidTarget>
+    <QuestTargetInfo.InvalidWorldObject>Dieses Weltobjekt ist kein gültiges Transportziel.</QuestTargetInfo.InvalidWorldObject>
+    <QuestTargetInfo.InvalidLandingTarget>Ungültiger Landeplatz.</QuestTargetInfo.InvalidLandingTarget>
+    <QuestTargetInfo.RequiresSignalJammer>Signalstörer erforderlich.</QuestTargetInfo.RequiresSignalJammer>
+    <QuestTargetInfo.NoLayerPath>Keine Route zwischen Planetenschichten.</QuestTargetInfo.NoLayerPath>
+    <QuestTargetInfo.BeyondMaximumRange>Außerhalb der maximalen Reichweite.</QuestTargetInfo.BeyondMaximumRange>
+    <QuestTargetInfo.AncientTransportPodInRange>Antike Transportkapsel: in Reichweite, max. {0}
+        Felder.</QuestTargetInfo.AncientTransportPodInRange>
+    <QuestTargetInfo.AncientTransportPodBeyondMaximumRange>Antike Transportkapsel: außerhalb der
+        maximalen Reichweite, max. {0} Felder.</QuestTargetInfo.AncientTransportPodBeyondMaximumRange>
+    <QuestTargetInfo.NotEnoughFuel>Nicht genug Treibstoff.</QuestTargetInfo.NotEnoughFuel>
+    <QuestTargetInfo.NotEnoughFuelInGravshipTanks>Nicht genug Treibstoff in den Gravschiff-Tanks.</QuestTargetInfo.NotEnoughFuelInGravshipTanks>
 </LanguageData>

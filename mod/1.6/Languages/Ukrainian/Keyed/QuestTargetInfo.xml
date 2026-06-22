@@ -15,4 +15,19 @@
     <QuestTargetInfo.OpenWorldTargetInfoTooltip>Показати інформацію про ціль</QuestTargetInfo.OpenWorldTargetInfoTooltip>
     <QuestTargetInfo.CollapseTooltip>Згорнути</QuestTargetInfo.CollapseTooltip>
     <QuestTargetInfo.ExpandTooltip>Розгорнути</QuestTargetInfo.ExpandTooltip>
+    <QuestTargetInfo.RouteUnavailable>Маршрут недоступний.</QuestTargetInfo.RouteUnavailable>
+    <QuestTargetInfo.NoVehicle>Транспорт не знайдено.</QuestTargetInfo.NoVehicle>
+    <QuestTargetInfo.InvalidOrigin>Некоректна точка відправлення.</QuestTargetInfo.InvalidOrigin>
+    <QuestTargetInfo.InvalidTarget>Некоректна ціль.</QuestTargetInfo.InvalidTarget>
+    <QuestTargetInfo.InvalidWorldObject>Цей об’єкт світу не є допустимою ціллю для транспорту.</QuestTargetInfo.InvalidWorldObject>
+    <QuestTargetInfo.InvalidLandingTarget>Недопустима точка посадки.</QuestTargetInfo.InvalidLandingTarget>
+    <QuestTargetInfo.RequiresSignalJammer>Потрібен глушник сигналу.</QuestTargetInfo.RequiresSignalJammer>
+    <QuestTargetInfo.NoLayerPath>Немає маршруту між шарами планети.</QuestTargetInfo.NoLayerPath>
+    <QuestTargetInfo.BeyondMaximumRange>Ціль поза максимальною дальністю.</QuestTargetInfo.BeyondMaximumRange>
+    <QuestTargetInfo.AncientTransportPodInRange>Стародавня транспортна капсула: в межах дальності,
+        максимум {0} плиток.</QuestTargetInfo.AncientTransportPodInRange>
+    <QuestTargetInfo.AncientTransportPodBeyondMaximumRange>Стародавня транспортна капсула: ціль поза
+        межами дальності, максимум {0} плиток.</QuestTargetInfo.AncientTransportPodBeyondMaximumRange>
+    <QuestTargetInfo.NotEnoughFuel>Недостатньо пального.</QuestTargetInfo.NotEnoughFuel>
+    <QuestTargetInfo.NotEnoughFuelInGravshipTanks>Недостатньо пального в баках гравкорабля.</QuestTargetInfo.NotEnoughFuelInGravshipTanks>
 </LanguageData>

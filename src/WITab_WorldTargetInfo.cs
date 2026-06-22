@@ -9,7 +9,7 @@ namespace QuestTargetInfo
 {
     internal class WITab_WorldTargetInfo : WITab
     {
-        private static readonly Vector2 WinSize = new Vector2(400f, 320f);
+        private static readonly Vector2 WinSize = new Vector2(320f, 400f);
 
         private Vector2 _scrollPosition;
         private float _lastDrawnHeight;

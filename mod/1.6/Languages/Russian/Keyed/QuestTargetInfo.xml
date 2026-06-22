@@ -15,4 +15,20 @@
     <QuestTargetInfo.OpenWorldTargetInfoTooltip>Показать информацию о цели</QuestTargetInfo.OpenWorldTargetInfoTooltip>
     <QuestTargetInfo.CollapseTooltip>Свернуть</QuestTargetInfo.CollapseTooltip>
     <QuestTargetInfo.ExpandTooltip>Развернуть</QuestTargetInfo.ExpandTooltip>
+    <QuestTargetInfo.RouteUnavailable>Маршрут недоступен.</QuestTargetInfo.RouteUnavailable>
+    <QuestTargetInfo.NoVehicle>Транспорт не найден.</QuestTargetInfo.NoVehicle>
+    <QuestTargetInfo.InvalidOrigin>Некорректная точка отправления.</QuestTargetInfo.InvalidOrigin>
+    <QuestTargetInfo.InvalidTarget>Некорректная цель.</QuestTargetInfo.InvalidTarget>
+    <QuestTargetInfo.InvalidWorldObject>Этот объект мира не является допустимой целью для
+        транспорта.</QuestTargetInfo.InvalidWorldObject>
+    <QuestTargetInfo.InvalidLandingTarget>Недопустимая точка посадки.</QuestTargetInfo.InvalidLandingTarget>
+    <QuestTargetInfo.RequiresSignalJammer>Требуется подавитель сигнала.</QuestTargetInfo.RequiresSignalJammer>
+    <QuestTargetInfo.NoLayerPath>Нет маршрута между слоями планеты.</QuestTargetInfo.NoLayerPath>
+    <QuestTargetInfo.BeyondMaximumRange>Цель за пределами максимальной дальности.</QuestTargetInfo.BeyondMaximumRange>
+    <QuestTargetInfo.AncientTransportPodInRange>Древняя транспортная капсула: в пределах дальности,
+        максимум {0} клеток.</QuestTargetInfo.AncientTransportPodInRange>
+    <QuestTargetInfo.AncientTransportPodBeyondMaximumRange>Древняя транспортная капсула: цель за
+        пределами дальности, максимум {0} клеток.</QuestTargetInfo.AncientTransportPodBeyondMaximumRange>
+    <QuestTargetInfo.NotEnoughFuel>Недостаточно топлива.</QuestTargetInfo.NotEnoughFuel>
+    <QuestTargetInfo.NotEnoughFuelInGravshipTanks>Недостаточно топлива в баках гравикорабля.</QuestTargetInfo.NotEnoughFuelInGravshipTanks>
 </LanguageData>

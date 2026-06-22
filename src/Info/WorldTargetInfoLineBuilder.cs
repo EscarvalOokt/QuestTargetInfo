@@ -1,16 +1,10 @@
 using System.Collections.Generic;
-using RimWorld;
-using UnityEngine;
 using Verse;
 
 namespace QuestTargetInfo
 {
     internal static class WorldTargetInfoLineBuilder
     {
-        private const float ShuttleFuelPerTile = 3f;
-        private const float PodFuelPerTile = 2.25f;
-        private const float MinFuel = 50f;
-
         public static IEnumerable<string> BuildLines(WorldTargetInfoRequest request)
         {
             WorldTargetRouteInfo route = WorldTargetRouteCalculator.Calculate(request);
@@ -22,88 +16,198 @@ namespace QuestTargetInfo
                 yield break;
             }
 
-            if(!route.HasDistance)
-                yield break;
+            if(route.HasDistance)
+            {
+                foreach(string line in GetDistanceLines(route.Distance))
+                    yield return line;
+            }
 
-            WorldTargetDistanceInfo distance = route.Distance;
-
-            foreach(string line in GetDistanceLines(distance))
+            foreach(string line in GetTransportPodLines(request))
                 yield return line;
 
-            foreach(string line in GetShuttleLines(distance))
-                yield return line;
-
-            foreach(string line in GetTransportPodLines(distance))
+            foreach(string line in GetShuttleLines(request))
                 yield return line;
 
             foreach(string line in GetGravshipLines(request))
                 yield return line;
         }
 
-        private static IEnumerable<string> GetDistanceLines(WorldTargetDistanceInfo distance)
+        private static IEnumerable<string> GetDistanceLines(
+            WorldTargetDistanceInfo distance)
         {
             yield return "QuestTargetInfo.EstimatedDistanceTiles".Translate(distance.DistanceTo);
         }
 
-        private static IEnumerable<string> GetShuttleLines(WorldTargetDistanceInfo distance)
+        private static IEnumerable<string> GetTransportPodLines(
+            WorldTargetInfoRequest request)
         {
-            if(!ModsConfig.IsActive("ludeon.rimworld.odyssey"))
-                yield break;
+            WorldTargetTransportInfo info =
+                WorldTargetFlyingTransportCalculator.CalculateTransportPod(request);
 
-            float fuelTo = Mathf.Max(
-                MinFuel,
-                distance.DistanceTo * ShuttleFuelPerTile * distance.ToLayer.Def.rangeDistanceFactor);
-
-            float fuelReturn = Mathf.Max(
-                MinFuel,
-                distance.DistanceReturn * ShuttleFuelPerTile * distance.FromLayer.Def.rangeDistanceFactor);
-
-            float fuelTotal = fuelTo + fuelReturn;
-
-            yield return "";
-            yield return "QuestTargetInfo.Shuttle".Translate();
-            yield return "QuestTargetInfo.FuelCost".Translate((int)fuelTo);
-            yield return "QuestTargetInfo.FuelReturnCost".Translate((int)fuelReturn);
-            yield return "QuestTargetInfo.FuelTotalCost".Translate((int)fuelTotal);
+            foreach(string line in GetTransportLines(info))
+                yield return line;
         }
 
-        private static IEnumerable<string> GetTransportPodLines(WorldTargetDistanceInfo distance)
+        private static IEnumerable<string> GetShuttleLines(
+            WorldTargetInfoRequest request)
         {
-            float fuelTo = Mathf.Max(
-                MinFuel,
-                distance.DistanceTo * PodFuelPerTile * distance.ToLayer.Def.rangeDistanceFactor);
+            WorldTargetTransportInfo info =
+                WorldTargetFlyingTransportCalculator.CalculateShuttle(request);
 
-            yield return "";
-            yield return "QuestTargetInfo.TransportPod".Translate();
-            yield return "QuestTargetInfo.FuelCost".Translate((int)fuelTo);
-        }
-
-        private static IEnumerable<string> GetGravshipLines(WorldTargetInfoRequest request)
-        {
-            if(!ModsConfig.IsActive("ludeon.rimworld.odyssey"))
+            if(info.Status == WorldTargetTransportStatus.NoDlc)
                 yield break;
 
-            yield return "";
-            yield return "QuestTargetInfo.Gravship".Translate();
+            foreach(string line in GetTransportLines(info))
+                yield return line;
+        }
 
-            if(!(GravshipUtility.GetPlayerGravEngine_NewTemp(Find.CurrentMap) is Building_GravEngine engine))
+        private static IEnumerable<string> GetGravshipLines(
+            WorldTargetInfoRequest request)
+        {
+            WorldTargetTransportInfo info =
+                WorldTargetFlyingTransportCalculator.CalculateGravship(request);
+
+            if(info.Status == WorldTargetTransportStatus.NoDlc)
+                yield break;
+
+            foreach(string line in GetTransportLines(info))
+                yield return line;
+        }
+
+        private static IEnumerable<string> GetTransportLines(
+            WorldTargetTransportInfo info)
+        {
+            yield return "";
+            yield return GetTransportTitle(info.Kind);
+
+            if(info.IsAvailable)
             {
-                yield return "QuestTargetInfo.NoGravship".Translate();
+                foreach(string line in GetAvailableTransportLines(info))
+                    yield return line;
+
+                foreach(string line in GetAdditionalTransportLines(info))
+                    yield return line;
+
                 yield break;
             }
 
-            if(!GravshipUtility.TryGetPathFuelCost(
-                engine.Tile,
-                request.TargetTile,
-                out float fuelCost,
-                out int _,
-                fuelPerTile: engine.FuelPerTile))
+            if(info.FuelCost >= 0f)
+                yield return "QuestTargetInfo.FuelCost".Translate((int)info.FuelCost);
+
+            yield return GetStatusLine(info);
+
+            foreach(string line in GetAdditionalTransportLines(info))
+                yield return line;
+        }
+
+        private static IEnumerable<string> GetAvailableTransportLines(
+            WorldTargetTransportInfo info)
+        {
+            yield return "QuestTargetInfo.FuelCost".Translate((int)info.FuelCost);
+
+            if(info.Kind != WorldTargetTransportKind.Shuttle)
+                yield break;
+
+            yield return "QuestTargetInfo.FuelReturnCost".Translate((int)info.FuelReturnCost);
+            yield return "QuestTargetInfo.FuelTotalCost".Translate((int)info.FuelTotalCost);
+        }
+
+        private static IEnumerable<string> GetAdditionalTransportLines(
+            WorldTargetTransportInfo info)
+        {
+            if(info.Kind != WorldTargetTransportKind.TransportPod)
+                yield break;
+
+            if(info.DistanceTo < 0)
+                yield break;
+
+            if(info.DistanceTo > WorldTargetFlyingTransportCalculator.AncientTransportPodMaxLaunchDistance)
             {
-                yield return "QuestTargetInfo.GravshipRouteUnavailable".Translate();
+                yield return "QuestTargetInfo.AncientTransportPodBeyondMaximumRange".Translate(
+                    WorldTargetFlyingTransportCalculator.AncientTransportPodMaxLaunchDistance);
+
                 yield break;
             }
 
-            yield return "QuestTargetInfo.FuelCost".Translate((int)fuelCost);
+            yield return "QuestTargetInfo.AncientTransportPodInRange".Translate(
+                WorldTargetFlyingTransportCalculator.AncientTransportPodMaxLaunchDistance);
+        }
+
+        private static string GetTransportTitle(
+            WorldTargetTransportKind kind)
+        {
+            switch(kind)
+            {
+                case WorldTargetTransportKind.TransportPod:
+                    return "QuestTargetInfo.TransportPod".Translate();
+
+                case WorldTargetTransportKind.Shuttle:
+                    return "QuestTargetInfo.Shuttle".Translate();
+
+                case WorldTargetTransportKind.Gravship:
+                    return "QuestTargetInfo.Gravship".Translate();
+
+                default:
+                    return "QuestTargetInfo.Header".Translate();
+            }
+        }
+
+        private static string GetStatusLine(
+            WorldTargetTransportInfo info)
+        {
+            if(info.Status == WorldTargetTransportStatus.InvalidLandingTarget
+                && !info.Reason.NullOrEmpty())
+            {
+                return info.Reason;
+            }
+
+            switch(info.Status)
+            {
+                case WorldTargetTransportStatus.NoVehicle:
+                    if(info.Kind == WorldTargetTransportKind.Gravship)
+                        return "QuestTargetInfo.NoGravship".Translate();
+
+                    return "QuestTargetInfo.NoVehicle".Translate();
+
+                case WorldTargetTransportStatus.InvalidOrigin:
+                    return "QuestTargetInfo.InvalidOrigin".Translate();
+
+                case WorldTargetTransportStatus.InvalidTarget:
+                    return "QuestTargetInfo.InvalidTarget".Translate();
+
+                case WorldTargetTransportStatus.InvalidWorldObject:
+                    return "QuestTargetInfo.InvalidWorldObject".Translate();
+
+                case WorldTargetTransportStatus.InvalidLandingTarget:
+                    return "QuestTargetInfo.InvalidLandingTarget".Translate();
+
+                case WorldTargetTransportStatus.RequiresSignalJammer:
+                    return "QuestTargetInfo.RequiresSignalJammer".Translate();
+
+                case WorldTargetTransportStatus.NoLayerPath:
+                    return "QuestTargetInfo.NoLayerPath".Translate();
+
+                case WorldTargetTransportStatus.NoRoute:
+                    return "QuestTargetInfo.RouteUnavailable".Translate();
+
+                case WorldTargetTransportStatus.BeyondMaximumRange:
+                    return "QuestTargetInfo.BeyondMaximumRange".Translate();
+
+                case WorldTargetTransportStatus.NotEnoughFuel:
+                    if(info.Kind == WorldTargetTransportKind.Gravship)
+                        return "QuestTargetInfo.NotEnoughFuelInGravshipTanks".Translate();
+
+                    return "QuestTargetInfo.NotEnoughFuel".Translate();
+
+                case WorldTargetTransportStatus.RouteUnavailable:
+                    if(info.Kind == WorldTargetTransportKind.Gravship)
+                        return "QuestTargetInfo.GravshipRouteUnavailable".Translate();
+
+                    return "QuestTargetInfo.RouteUnavailable".Translate();
+
+                default:
+                    return "QuestTargetInfo.RouteUnavailable".Translate();
+            }
         }
     }
 }
