@@ -1,14 +1,18 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-  <QuestTargetInfo.EstimatedDistanceTiles>Geschätzte Entfernung:\n{0} Felder</QuestTargetInfo.EstimatedDistanceTiles>
-  <QuestTargetInfo.Shuttle>Raumfähre:</QuestTargetInfo.Shuttle>
-  <QuestTargetInfo.FuelCost>Treibstoffkosten: {0}</QuestTargetInfo.FuelCost>
-  <QuestTargetInfo.FuelReturnCost>Für den Rückflug: {0}</QuestTargetInfo.FuelReturnCost>
-  <QuestTargetInfo.FuelTotalCost>Gesamtkraftstoffbedarf: {0}</QuestTargetInfo.FuelTotalCost>
-  <QuestTargetInfo.TransportPod>Transportkapsel:</QuestTargetInfo.TransportPod>
-  <QuestTargetInfo.Gravship>Gravschiff:</QuestTargetInfo.Gravship>
-  <QuestTargetInfo.NoGravship>Kein Gravschiff gefunden.</QuestTargetInfo.NoGravship>
-  <QuestTargetInfo.Header>Zielinfo</QuestTargetInfo.Header>
-  <QuestTargetInfo.CollapseTooltip>Ausblenden</QuestTargetInfo.CollapseTooltip>
-  <QuestTargetInfo.ExpandTooltip>Einblenden</QuestTargetInfo.ExpandTooltip>
+    <QuestTargetInfo.EstimatedDistanceTiles>Geschätzte Entfernung:\n{0} Felder</QuestTargetInfo.EstimatedDistanceTiles>
+    <QuestTargetInfo.Shuttle>Raumfähre:</QuestTargetInfo.Shuttle>
+    <QuestTargetInfo.FuelCost>Treibstoffkosten: {0}</QuestTargetInfo.FuelCost>
+    <QuestTargetInfo.FuelReturnCost>Für den Rückflug: {0}</QuestTargetInfo.FuelReturnCost>
+    <QuestTargetInfo.FuelTotalCost>Gesamtkraftstoffbedarf: {0}</QuestTargetInfo.FuelTotalCost>
+    <QuestTargetInfo.TransportPod>Transportkapsel:</QuestTargetInfo.TransportPod>
+    <QuestTargetInfo.Gravship>Gravschiff:</QuestTargetInfo.Gravship>
+    <QuestTargetInfo.GravshipRouteUnavailable>Route nicht verfügbar.</QuestTargetInfo.GravshipRouteUnavailable>
+    <QuestTargetInfo.NoGravship>Kein Gravschiff gefunden.</QuestTargetInfo.NoGravship>
+    <QuestTargetInfo.Header>Zielinfo</QuestTargetInfo.Header>
+    <QuestTargetInfo.TabLabel>Ziel</QuestTargetInfo.TabLabel>
+    <QuestTargetInfo.SameTile>Das ausgewählte Ziel befindet sich auf der aktuellen Karte.</QuestTargetInfo.SameTile>
+    <QuestTargetInfo.OpenWorldTargetInfoTooltip>Zielinfo anzeigen</QuestTargetInfo.OpenWorldTargetInfoTooltip>
+    <QuestTargetInfo.CollapseTooltip>Ausblenden</QuestTargetInfo.CollapseTooltip>
+    <QuestTargetInfo.ExpandTooltip>Einblenden</QuestTargetInfo.ExpandTooltip>
 </LanguageData>

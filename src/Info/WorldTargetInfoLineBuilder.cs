@@ -14,6 +14,14 @@ namespace QuestTargetInfo
         public static IEnumerable<string> BuildLines(WorldTargetInfoRequest request)
         {
             WorldTargetRouteInfo route = WorldTargetRouteCalculator.Calculate(request);
+
+            if(route.Status == WorldTargetRouteStatus.SameTile)
+            {
+                yield return "QuestTargetInfo.EstimatedDistanceTiles".Translate(0);
+                yield return "QuestTargetInfo.SameTile".Translate();
+                yield break;
+            }
+
             if(!route.HasDistance)
                 yield break;
 
@@ -78,19 +86,20 @@ namespace QuestTargetInfo
             yield return "";
             yield return "QuestTargetInfo.Gravship".Translate();
 
-            if(!(GravshipUtility.GetPlayerGravEngine(Find.CurrentMap) is Building_GravEngine engine))
+            if(!(GravshipUtility.GetPlayerGravEngine_NewTemp(Find.CurrentMap) is Building_GravEngine engine))
             {
                 yield return "QuestTargetInfo.NoGravship".Translate();
                 yield break;
             }
 
             if(!GravshipUtility.TryGetPathFuelCost(
-                    engine.Tile,
-                    request.TargetTile,
-                    out float fuelCost,
-                    out int _,
-                    fuelPerTile: engine.FuelPerTile))
+                engine.Tile,
+                request.TargetTile,
+                out float fuelCost,
+                out int _,
+                fuelPerTile: engine.FuelPerTile))
             {
+                yield return "QuestTargetInfo.GravshipRouteUnavailable".Translate();
                 yield break;
             }
 

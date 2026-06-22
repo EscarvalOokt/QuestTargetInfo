@@ -16,7 +16,8 @@ namespace QuestTargetInfo
         private readonly WorldTargetInfoRequest _request;
 
         private List<string> _cachedLines;
-        private PlanetTile _cachedTile = PlanetTile.Invalid;
+        private PlanetTile _cachedOriginTile = PlanetTile.Invalid;
+        private PlanetTile _cachedTargetTile = PlanetTile.Invalid;
 
         private float Height => _collapsed ? CollapsedHeight : InitialSize.y;
 
@@ -39,7 +40,7 @@ namespace QuestTargetInfo
         {
             base.WindowUpdate();
 
-            if(!Find.WindowStack.Windows.OfType<MainTabWindow_Quests>().Any())
+            if(ShouldClose())
                 Close();
         }
 
@@ -47,20 +48,14 @@ namespace QuestTargetInfo
         {
             base.PreOpen();
 
-            float spacing = 5f;
-
-            windowRect = new Rect(
-                1010f + spacing,
-                UI.screenHeight - 35 - Height,
-                InitialSize.x,
-                Height);
+            windowRect = GetInitialWindowRect();
         }
 
         public override void DoWindowContents(Rect inRect)
         {
             const float headerHeight = 30f;
 
-            Rect headerRect = new Rect(inRect.x, inRect.y, inRect.width, headerHeight);
+            var headerRect = new Rect(inRect.x, inRect.y, inRect.width, headerHeight);
             DrawHeaderLabel(headerRect);
             DrawCollapseButton(headerRect);
 
@@ -76,7 +71,7 @@ namespace QuestTargetInfo
                 return;
             }
 
-            Rect contentRect = new Rect(
+            var contentRect = new Rect(
                 inRect.x,
                 inRect.y + headerHeight + 10f,
                 inRect.width,
@@ -91,12 +86,64 @@ namespace QuestTargetInfo
             listing.End();
         }
 
+        private bool ShouldClose()
+        {
+            switch(_request.Source)
+            {
+                case WorldTargetInfoSource.Quest:
+                    return !Find.WindowStack.Windows.OfType<MainTabWindow_Quests>().Any();
+
+                case WorldTargetInfoSource.WorldInspectPane:
+                    return false;
+
+                default:
+                    return false;
+            }
+        }
+
+        private Rect GetInitialWindowRect()
+        {
+            switch(_request.Source)
+            {
+                case WorldTargetInfoSource.Quest:
+                    return GetQuestWindowRect();
+
+                case WorldTargetInfoSource.WorldInspectPane:
+                    return GetWorldInspectPaneWindowRect();
+
+                default:
+                    return GetQuestWindowRect();
+            }
+        }
+
+        private Rect GetQuestWindowRect()
+        {
+            float spacing = 5f;
+
+            return new Rect(
+                1010f + spacing,
+                UI.screenHeight - 35f - Height,
+                InitialSize.x,
+                Height);
+        }
+
+        private Rect GetWorldInspectPaneWindowRect()
+        {
+            float spacing = 12f;
+
+            return new Rect(
+                UI.screenWidth - InitialSize.x - spacing,
+                UI.screenHeight - 35f - Height,
+                InitialSize.x,
+                Height);
+        }
+
         private void DrawHeaderLabel(Rect rect)
         {
             Text.Anchor = TextAnchor.MiddleLeft;
             Text.Font = GameFont.Small;
 
-            Rect labelRect = new Rect(rect.x, rect.y, rect.width - 40f, rect.height);
+            var labelRect = new Rect(rect.x, rect.y, rect.width - 40f, rect.height);
             Widgets.Label(labelRect, "QuestTargetInfo.Header".Translate());
 
             Text.Anchor = TextAnchor.UpperLeft;
@@ -104,7 +151,7 @@ namespace QuestTargetInfo
 
         private void DrawCollapseButton(Rect rect)
         {
-            Rect buttonRect = new Rect(rect.xMax - 28f, rect.y + 2f, 24f, 24f);
+            var buttonRect = new Rect(rect.xMax - 28f, rect.y + 2f, 24f, 24f);
             Texture2D icon = _collapsed ? TexButton.ReorderUp : TexButton.ReorderDown;
 
             if(Widgets.ButtonImage(buttonRect, icon))
@@ -125,10 +172,13 @@ namespace QuestTargetInfo
 
         private List<string> GetLinesCached()
         {
-            if(_cachedLines == null || _cachedTile != _request.TargetTile)
+            if(_cachedLines == null
+                || _cachedOriginTile != _request.OriginTile
+                || _cachedTargetTile != _request.TargetTile)
             {
                 _cachedLines = WorldTargetInfoLineBuilder.BuildLines(_request).ToList();
-                _cachedTile = _request.TargetTile;
+                _cachedOriginTile = _request.OriginTile;
+                _cachedTargetTile = _request.TargetTile;
             }
 
             return _cachedLines;

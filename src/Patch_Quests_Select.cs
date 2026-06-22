@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Reflection;
 using HarmonyLib;
 using RimWorld;
 using RimWorld.Planet;
@@ -11,9 +12,9 @@ namespace QuestTargetInfo
     {
         public static void Postfix(MainTabWindow_Quests __instance)
         {
-            CloseOpenedWindows();
+            WorldTargetInfoWindowUtility.CloseOpenedWindows();
 
-            var questField = AccessTools.Field(typeof(MainTabWindow_Quests), "selected");
+            FieldInfo questField = AccessTools.Field(typeof(MainTabWindow_Quests), "selected");
             if(!(questField.GetValue(__instance) is Quest currentQuest))
                 return;
 
@@ -24,20 +25,7 @@ namespace QuestTargetInfo
             if(!TryCreateRequest(target, out WorldTargetInfoRequest request))
                 return;
 
-            Find.WindowStack.Add(new Window_QuestTargetInfo(request));
-        }
-
-        private static void CloseOpenedWindows()
-        {
-            if(!Find.WindowStack.Windows.OfType<Window_QuestTargetInfo>().Any())
-                return;
-
-            var infoWindows = Find.WindowStack.Windows
-                .OfType<Window_QuestTargetInfo>()
-                .ToList();
-
-            foreach(Window_QuestTargetInfo window in infoWindows)
-                Find.WindowStack.TryRemove(window);
+            WorldTargetInfoWindowUtility.OpenOrReplace(request);
         }
 
         private static bool TryCreateRequest(

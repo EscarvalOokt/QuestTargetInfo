@@ -80,10 +80,14 @@
     <Compile Include="Info\WorldTargetRouteCalculator.cs" />
     <Compile Include="Info\WorldTargetRouteInfo.cs" />
     <Compile Include="Info\WorldTargetRouteStatus.cs" />
+    <Compile Include="Patch_WorldInspectPane_CurTabs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Patch_Quests_Select.cs" />
     <Compile Include="QuestTargetInfoMod.cs" />
     <Compile Include="Window_QuestTargetInfo.cs" />
+    <Compile Include="WITab_WorldTargetInfo.cs" />
+    <Compile Include="WorldTargetInfoSelectionUtility.cs" />
+    <Compile Include="WorldTargetInfoWindowUtility.cs" />
   </ItemGroup>
   <ItemGroup />
   <Target Name="ValidateExternalReferencePaths" BeforeTargets="ResolveReferences">

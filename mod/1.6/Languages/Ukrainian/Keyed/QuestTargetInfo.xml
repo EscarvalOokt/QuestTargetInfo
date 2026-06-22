@@ -1,14 +1,18 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-  <QuestTargetInfo.EstimatedDistanceTiles>Орієнтовна відстань: {0} плиток</QuestTargetInfo.EstimatedDistanceTiles>
-  <QuestTargetInfo.Shuttle>Шатл:</QuestTargetInfo.Shuttle>
-  <QuestTargetInfo.FuelCost>Витрати пального: {0}</QuestTargetInfo.FuelCost>
-  <QuestTargetInfo.FuelReturnCost>Пальне на зворотний шлях: {0}</QuestTargetInfo.FuelReturnCost>
-  <QuestTargetInfo.FuelTotalCost>Загальні витрати пального: {0}</QuestTargetInfo.FuelTotalCost>
-  <QuestTargetInfo.TransportPod>Транспортна капсула:</QuestTargetInfo.TransportPod>
-  <QuestTargetInfo.Gravship>Гравкорабель:</QuestTargetInfo.Gravship>
-  <QuestTargetInfo.NoGravship>Гравкорабель не знайдено.</QuestTargetInfo.NoGravship>
-  <QuestTargetInfo.Header>Інформація про ціль</QuestTargetInfo.Header>
-  <QuestTargetInfo.CollapseTooltip>Згорнути</QuestTargetInfo.CollapseTooltip>
-  <QuestTargetInfo.ExpandTooltip>Розгорнути</QuestTargetInfo.ExpandTooltip>
+    <QuestTargetInfo.EstimatedDistanceTiles>Орієнтовна відстань: {0} плиток</QuestTargetInfo.EstimatedDistanceTiles>
+    <QuestTargetInfo.Shuttle>Шатл:</QuestTargetInfo.Shuttle>
+    <QuestTargetInfo.FuelCost>Витрати пального: {0}</QuestTargetInfo.FuelCost>
+    <QuestTargetInfo.FuelReturnCost>Пальне на зворотний шлях: {0}</QuestTargetInfo.FuelReturnCost>
+    <QuestTargetInfo.FuelTotalCost>Загальні витрати пального: {0}</QuestTargetInfo.FuelTotalCost>
+    <QuestTargetInfo.TransportPod>Транспортна капсула:</QuestTargetInfo.TransportPod>
+    <QuestTargetInfo.Gravship>Гравкорабель:</QuestTargetInfo.Gravship>
+    <QuestTargetInfo.GravshipRouteUnavailable>Маршрут недоступний.</QuestTargetInfo.GravshipRouteUnavailable>
+    <QuestTargetInfo.NoGravship>Гравкорабель не знайдено.</QuestTargetInfo.NoGravship>
+    <QuestTargetInfo.Header>Інформація про ціль</QuestTargetInfo.Header>
+    <QuestTargetInfo.TabLabel>Ціль</QuestTargetInfo.TabLabel>
+    <QuestTargetInfo.SameTile>Вибрана ціль знаходиться на поточній мапі.</QuestTargetInfo.SameTile>
+    <QuestTargetInfo.OpenWorldTargetInfoTooltip>Показати інформацію про ціль</QuestTargetInfo.OpenWorldTargetInfoTooltip>
+    <QuestTargetInfo.CollapseTooltip>Згорнути</QuestTargetInfo.CollapseTooltip>
+    <QuestTargetInfo.ExpandTooltip>Розгорнути</QuestTargetInfo.ExpandTooltip>
 </LanguageData>
