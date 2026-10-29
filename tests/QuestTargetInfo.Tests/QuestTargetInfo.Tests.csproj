@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <RootNamespace>QuestTargetInfo.Tests</RootNamespace>
+        <AssemblyName>QuestTargetInfo.Tests</AssemblyName>
+        <IsTestProject>true</IsTestProject>
+        <IsPackable>false</IsPackable>
+        <Nullable>disable</Nullable>
+        <ImplicitUsings>disable</ImplicitUsings>
+        <!-- The solution already schedules the production project. Do not compile the
+             same output concurrently through the test-only DeployToGame override. -->
+        <BuildProjectReferences Condition="'$(BuildingSolutionFile)' == 'true'">false</BuildProjectReferences>
+    </PropertyGroup>
+
+    <Import Project="..\..\src\QuestTargetInfo.Local.props" Condition="Exists('..\..\src\QuestTargetInfo.Local.props')"/>
+    <PropertyGroup>
+        <RimWorldManagedDir Condition="'$(RimWorldManagedDir)' == ''">$(RIMWORLD_INSTALL_DIR)</RimWorldManagedDir>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.8.1"/>
+        <PackageReference Include="NUnit" Version="4.6.1"/>
+        <PackageReference Include="NUnit3TestAdapter" Version="6.2.0">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\src\QuestTargetInfo\QuestTargetInfo.csproj" AdditionalProperties="DeployToGame=false"/>
+    </ItemGroup>
+    <ItemGroup>
+        <Reference Include="Assembly-CSharp">
+            <HintPath>$(RimWorldManagedDir)/Assembly-CSharp.dll</HintPath>
+            <Private>true</Private>
+        </Reference>
+        <Reference Include="UnityStubs">
+            <HintPath>$(RimWorldManagedDir)/UnityStubs.dll</HintPath>
+            <Private>true</Private>
+        </Reference>
+    </ItemGroup>
+</Project>

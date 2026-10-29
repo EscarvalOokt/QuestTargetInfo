@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <QuestTargetInfo.AncientTransportPodBeyondMaximumRange>Antike Transportkapsel: außerhalb der maximalen Reichweite, max. {0} Felder.</QuestTargetInfo.AncientTransportPodBeyondMaximumRange>
+    <QuestTargetInfo.AncientTransportPodInRange>Antike Transportkapsel: in Reichweite, max. {0} Felder.</QuestTargetInfo.AncientTransportPodInRange>
+    <QuestTargetInfo.AncientTransportPodShort>Antike Kapsel</QuestTargetInfo.AncientTransportPodShort>
+    <QuestTargetInfo.BeyondMaximumRange>Außerhalb der maximalen Reichweite.</QuestTargetInfo.BeyondMaximumRange>
+    <QuestTargetInfo.CollapseTooltip>Ausblenden</QuestTargetInfo.CollapseTooltip>
+    <QuestTargetInfo.CurrentMap>Aktuelle Karte</QuestTargetInfo.CurrentMap>
+    <QuestTargetInfo.Distance>Entfernung</QuestTargetInfo.Distance>
+    <QuestTargetInfo.DirectFlightFuelEstimate>Die Treibstoffwerte schätzen Direktflüge, keine Route mit Zwischenlandungen.</QuestTargetInfo.DirectFlightFuelEstimate>
+    <QuestTargetInfo.EstimatedDistanceTiles>Geschätzte Entfernung:\n{0} Felder</QuestTargetInfo.EstimatedDistanceTiles>
+    <QuestTargetInfo.EstimatedFuel>Geschätzter Treibstoffbedarf</QuestTargetInfo.EstimatedFuel>
+    <QuestTargetInfo.EstimatedLaunches>Geschätzte Starts</QuestTargetInfo.EstimatedLaunches>
+    <QuestTargetInfo.ExpandTooltip>Einblenden</QuestTargetInfo.ExpandTooltip>
+    <QuestTargetInfo.From>Von</QuestTargetInfo.From>
+    <QuestTargetInfo.Fuel>Treibstoff benötigt</QuestTargetInfo.Fuel>
+    <QuestTargetInfo.FuelCost>Treibstoffkosten: {0}</QuestTargetInfo.FuelCost>
+    <QuestTargetInfo.FuelEstimate>Geschätzte Treibstoffkosten: {0}</QuestTargetInfo.FuelEstimate>
+    <QuestTargetInfo.FuelReturnCost>Für den Rückflug: {0}</QuestTargetInfo.FuelReturnCost>
+    <QuestTargetInfo.FuelTotalCost>Gesamtkraftstoffbedarf: {0}</QuestTargetInfo.FuelTotalCost>
+    <QuestTargetInfo.Gravship>Gravschiff</QuestTargetInfo.Gravship>
+    <QuestTargetInfo.GravshipRouteUnavailable>Route nicht verfügbar.</QuestTargetInfo.GravshipRouteUnavailable>
+    <QuestTargetInfo.Header>Reiseinfo</QuestTargetInfo.Header>
+    <QuestTargetInfo.InvalidLandingTarget>Ungültiger Landeplatz.</QuestTargetInfo.InvalidLandingTarget>
+    <QuestTargetInfo.InvalidOrigin>Ungültiger Startpunkt.</QuestTargetInfo.InvalidOrigin>
+    <QuestTargetInfo.InvalidTarget>Ungültiges Ziel.</QuestTargetInfo.InvalidTarget>
+    <QuestTargetInfo.InvalidWorldObject>Dieses Weltobjekt ist kein gültiges Transportziel.</QuestTargetInfo.InvalidWorldObject>
+    <QuestTargetInfo.LaunchCountValue>{0} hin / {1} zurück</QuestTargetInfo.LaunchCountValue>
+    <QuestTargetInfo.Layer>Schicht</QuestTargetInfo.Layer>
+    <QuestTargetInfo.LayerAdjustedDistance>Schichtangepasste Entfernung</QuestTargetInfo.LayerAdjustedDistance>
+    <QuestTargetInfo.LayerRoute>{0} → {1}</QuestTargetInfo.LayerRoute>
+    <QuestTargetInfo.NoGravship>Kein Gravschiff gefunden.</QuestTargetInfo.NoGravship>
+    <QuestTargetInfo.NoLayerPath>Keine Route zwischen Planetenschichten.</QuestTargetInfo.NoLayerPath>
+    <QuestTargetInfo.NoVehicle>Kein Fahrzeug gefunden.</QuestTargetInfo.NoVehicle>
+    <QuestTargetInfo.NotEnoughFuel>Nicht genug Treibstoff.</QuestTargetInfo.NotEnoughFuel>
+    <QuestTargetInfo.NotEnoughFuelInGravshipTanks>Nicht genug Treibstoff in den Gravschiff-Tanks.</QuestTargetInfo.NotEnoughFuelInGravshipTanks>
+    <QuestTargetInfo.OpenWorldTargetInfoTooltip>Reiseinfo anzeigen</QuestTargetInfo.OpenWorldTargetInfoTooltip>
+    <QuestTargetInfo.OutboundFuel>Treibstoff hin benötigt</QuestTargetInfo.OutboundFuel>
+    <QuestTargetInfo.Range>Reichweite</QuestTargetInfo.Range>
+    <QuestTargetInfo.RangeValue>{0} / {1} Felder</QuestTargetInfo.RangeValue>
+    <QuestTargetInfo.Reason>Grund: {0}</QuestTargetInfo.Reason>
+    <QuestTargetInfo.RequiresSignalJammer>Signalstörer erforderlich.</QuestTargetInfo.RequiresSignalJammer>
+    <QuestTargetInfo.ReturnFuel>Treibstoff zurück benötigt</QuestTargetInfo.ReturnFuel>
+    <QuestTargetInfo.ReturnBeyondMaximumRange>Der Rückflug liegt außerhalb der Reichweite. Die Treibstoffwerte gelten nur für Direktflüge.</QuestTargetInfo.ReturnBeyondMaximumRange>
+    <QuestTargetInfo.ReturnRouteUnavailable>Rückflug: keine Route. Der Treibstoffbedarf für den Rückflug und insgesamt ist unbekannt.</QuestTargetInfo.ReturnRouteUnavailable>
+    <QuestTargetInfo.Route>Route</QuestTargetInfo.Route>
+    <QuestTargetInfo.RouteUnavailable>Route nicht verfügbar.</QuestTargetInfo.RouteUnavailable>
+    <QuestTargetInfo.SameTile>Das ausgewählte Ziel befindet sich auf der aktuellen Karte.</QuestTargetInfo.SameTile>
+    <QuestTargetInfo.Shuttle>Raumfähre</QuestTargetInfo.Shuttle>
+    <QuestTargetInfo.StatusAvailable>Verfügbar</QuestTargetInfo.StatusAvailable>
+    <QuestTargetInfo.StatusCannotLand>Landung unmöglich</QuestTargetInfo.StatusCannotLand>
+    <QuestTargetInfo.StatusInvalidTarget>Ungültiges Ziel</QuestTargetInfo.StatusInvalidTarget>
+    <QuestTargetInfo.StatusNoRoute>Keine Route</QuestTargetInfo.StatusNoRoute>
+    <QuestTargetInfo.StatusNoVehicle>Kein Fahrzeug</QuestTargetInfo.StatusNoVehicle>
+    <QuestTargetInfo.StatusNotEnoughFuel>Nicht genug Treibstoff</QuestTargetInfo.StatusNotEnoughFuel>
+    <QuestTargetInfo.StatusOutOfRange>Außer Reichweite</QuestTargetInfo.StatusOutOfRange>
+    <QuestTargetInfo.StatusRequiresSignalJammer>Störer nötig</QuestTargetInfo.StatusRequiresSignalJammer>
+    <QuestTargetInfo.StatusUnavailable>Nicht verfügbar</QuestTargetInfo.StatusUnavailable>
+    <QuestTargetInfo.TabLabel>Reise</QuestTargetInfo.TabLabel>
+    <QuestTargetInfo.TilesValue>{0} Felder</QuestTargetInfo.TilesValue>
+    <QuestTargetInfo.TotalFuel>Treibstoff gesamt benötigt</QuestTargetInfo.TotalFuel>
+    <QuestTargetInfo.TransportPod>Transportkapsel</QuestTargetInfo.TransportPod>
+
+    <QuestTargetInfo.SettingCompactMode>Kompakter Modus</QuestTargetInfo.SettingCompactMode>
+    <QuestTargetInfo.SettingShowAncientPodCompatibilityLine>Kompatibilitätszeile für antike Kapsel anzeigen</QuestTargetInfo.SettingShowAncientPodCompatibilityLine>
+    <QuestTargetInfo.SettingShowFuelAdjustedDistance>Schichtangepasste Entfernung anzeigen</QuestTargetInfo.SettingShowFuelAdjustedDistance>
+    <QuestTargetInfo.SettingShowGravship>Gravschiff anzeigen</QuestTargetInfo.SettingShowGravship>
+    <QuestTargetInfo.SettingShowQuestTravelWindow>Quest-Reiseinfofenster anzeigen</QuestTargetInfo.SettingShowQuestTravelWindow>
+    <QuestTargetInfo.SettingShowShuttle>Raumfähre anzeigen</QuestTargetInfo.SettingShowShuttle>
+    <QuestTargetInfo.SettingShowTransportPod>Transportkapsel anzeigen</QuestTargetInfo.SettingShowTransportPod>
+    <QuestTargetInfo.SettingShowUnavailableTransports>Nicht verfügbare Transporte anzeigen</QuestTargetInfo.SettingShowUnavailableTransports>
+    <QuestTargetInfo.SettingShowWorldInspectTravelTab>Reise-Reiter im Welt-Inspektorfenster anzeigen</QuestTargetInfo.SettingShowWorldInspectTravelTab>
+    <QuestTargetInfo.SettingTransportVisibility>Transportanzeige</QuestTargetInfo.SettingTransportVisibility>
+    <QuestTargetInfo.SettingsCategory>Quest Target Info</QuestTargetInfo.SettingsCategory>
+</LanguageData>

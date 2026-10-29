@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 256 256">
+    <defs>
+        <linearGradient id="modIconGradient" x1="128" y1="18" x2="128" y2="238"
+            gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#A8BCEC" />
+            <stop offset="1" stop-color="#7867AF" />
+        </linearGradient>
+    </defs>
+    <g fill="url(#modIconGradient)" stroke="#000000" stroke-width="3" stroke-linejoin="round">
+        <path fill-rule="evenodd"
+            d="M117 18H139V46.74A82 82 0 0 1 209.26 117H238V139H209.26A82 82 0 0 1 139 209.26V238H117V209.26A82 82 0 0 1 46.74 139H18V117H46.74A82 82 0 0 1 117 46.74Z
+               M128 69A59 59 0 1 0 128 187A59 59 0 1 0 128 69Z" />
+        <circle cx="128" cy="94" r="13" />
+        <path d="M108 118H140V157H151V175H105V157H116V136H108Z" />
+    </g>
+</svg>
